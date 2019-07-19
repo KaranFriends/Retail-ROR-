@@ -1,5 +1,7 @@
 {
   "name": "online_retail",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap": "^4.3.1"
+  }
 }

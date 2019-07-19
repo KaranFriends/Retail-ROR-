@@ -1,0 +1,20 @@
+User(id: integer, user_name: string, password: string, created_at: datetime, updated_at: datetime, email: string, phone_number: string, alternate_number: string)
+
+Product(id: integer, name: string, description: string, price: string, user_id: integer, brand: string, date_first_available: string, created_at: datetime, updated_at: datetime, email: string)
+
+Feedback
+ => Feedback(id: integer, quote: string, rating: string, product_id: integer, user_id: integer, created_at: datetime, updated_at: datetime)
+ 
+ Order
+ => Order(id: integer, price: string, status: string, user_id: integer, created_at: datetime, updated_at: datetime)
+ 
+ OrderItem(id: integer, order_id: integer, product_id: string, name: string, description: string, price: integer, brand: string, date_first_available: string, quantity: string, created_at: datetime, updated_at: datetime) 
+ 
+  Cart
+ => Cart(id: integer, user_id: integer, created_at: datetime, updated_at: datetime) 
+ 
+ CartItem
+ => CartItem(id: integer, quantity: integer, status: string, cart_id: integer, product_id: integer, created_at: datetime, updated_at: datetime)
+ 
+ Payment
+ => Payment(id: integer, mode: string, status: string, order_id: integer, created_at: datetime, updated_at: datetime)
