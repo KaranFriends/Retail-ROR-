@@ -7,13 +7,21 @@ class SessionsController < ApplicationController
     @user = User.new(params.require(:user).permit(:user_name,:password))
     #render plain: @user.user_name
 
-    if User.find_by user_name: @user.user_name and User.find_by user_name: @user.password
+    @validity = User.find_by(user_name: params[:user][:user_name])
+
+    if @validity.password = params[:user][:password])
       session[:current_user_id] = @user.id
-      redirect_to "http://localhost:3000/dashboard"
-     else
-      render 'invalid'
-     end
+      render "dashboards/index"
+    else
+      self.invalid
+    end
   end
+
+  def invalid
+    render plain:"invalid"
+  end
+
+
 
   # def show
   #   session[:current_user_id] = nil

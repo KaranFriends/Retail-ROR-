@@ -1,0 +1,51 @@
+<!-- <h1>welcome new user</h1>
+  <h1><%# @hi %></h1>
+  <%# link_to 'log_out' , 'http://localhost:3000/registrations' %> -->
+
+
+  <body style="background-color:#4B515D">
+ <nav class="navbar navbar-expand-lg navbar-dark bg-light rounded ">
+      <%= @user.user_name %>
+      <ul class="nav mr-auto">
+        <!-- <li class="nav-item active">
+          <%#  link_to 'Home' , 'sessions/new', :class => "btn nav-link" %>
+        </li> -->
+      </ul>
+      <ul class="nav ml-auto">
+
+         <li class="nav-item active">
+          <%=  link_to 'Home' , 'sessions/new', :class => "btn nav-link" %>
+        </li>
+        <li class="nav-item active">
+         <%=  link_to 'Log Out' , 'registrations/new', :class => "btn nav-link" %>
+       </li>
+      </ul>
+    </nav>
+<!--
+
+    <nav class="navbar   bg-lightnavbar-expand-lg navbar-da">
+  <ul class="nav justify-content-end ">
+    <li class="nav-item">
+      asdjaosdjos
+    </li>
+    <li class="nav-item ">
+      <div class="nav-link active " >
+        <%#  link_to 'Home' , 'sessions/new', :class => "btn" %>
+      </div>
+    </li>
+    <li class="nav-item ">
+      <div class="nav-link active " >
+        <%#  link_to 'Log Out' , 'registrations/new', :class => "btn" %>
+      </div>
+    </li>
+  </ul>
+  <ul class ="nav">
+  <li class="nav-item ">
+    <div class="nav-link active " >
+      <%#  link_to 'Log Out' , 'registrations/new', :class => "btn" %>
+    </div>
+  </li>
+
+  </ul>
+</nav> -->
+  </body>
