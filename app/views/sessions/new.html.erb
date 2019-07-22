@@ -18,11 +18,11 @@
       </li>
     </ul>
 
-    <div align="center" class="container " style="width: 1000px; background-color:#3E4551">
+    <div align="center" class="container " style="width: 500px; background-color:#3E4551">
       <div class="px-xl-5 py-xl-5">
         <%= form_for @user, url: { action: "create" }, :html => {:class => "form-horizontal center text-light"} do |f| %>
         <div class="row">
-          <div class="col-xl-6">
+          <div class="col-xl-12">
             <div class="row pl-xl-3">
               <%= f.label :user_name, "User name:", class: " control-label" %>
             </div>
@@ -36,7 +36,7 @@
         </div>
         <div class="row">
 
-          <div class="col-xl-6">
+          <div class="col-xl-12">
             <%= f.text_field :password, class: "form-control" %>
           </div>
         </div>

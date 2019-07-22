@@ -1,6 +1,16 @@
 class DashboardsController < ApplicationController
+
   def index
-@hi="sdfsdfdo"
+    if(validate != true)
+      render plain:"You have been logged out"
+
   end
 
+  def validate
+    if session[:current_user_id]?
+      return "true"
+    else
+      return "false"
+    end
+  end
 end

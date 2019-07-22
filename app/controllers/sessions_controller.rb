@@ -4,12 +4,12 @@ class SessionsController < ApplicationController
   end
   def create
 
-    @user = User.new(params.require(:user).permit(:user_name,:password))
+    @user = User.new(article_params)
     #render plain: @user.user_name
 
     @validity = User.find_by(user_name: params[:user][:user_name])
 
-    if @validity.password = params[:user][:password])
+    if @validity.password = params[:user][:password]
       session[:current_user_id] = @user.id
       render "dashboards/index"
     else
@@ -21,7 +21,10 @@ class SessionsController < ApplicationController
     render plain:"invalid"
   end
 
-
+  private
+    def article_params
+      params.require(:user).permit(:user_name, :password)
+    end
 
   # def show
   #   session[:current_user_id] = nil
