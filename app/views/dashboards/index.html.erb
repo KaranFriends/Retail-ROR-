@@ -59,37 +59,44 @@
   </ul>
   <ul class="nav ml-auto">
     <li class="nav-item active">
-      <%=  link_to 'Home' , 'dashboards/index', :class => "btn nav-link active" %>
-    </li>
-    <li class="nav-item active">
-      <%=  link_to 'Log Out' , 'registrations/new', :class => "btn nav-link" %>
-    </li>
-  </ul>
-</nav>
+      <%=  link_to 'Home' , controller: "dashboards", action: "index", :class => "btn" %>    </li>
+      <!-- <li class="nav-item active">
+        <%# <%=  link_to 'Log Out' , controller: "sessions", action: "destory", id: session[:current_user_id] ,:class => "btn" %> %>
 
-<div class="sidenav vertically-center alert ">
-  <br><br>
-  <li class="row py-xl-3" style="background-color:#4B515D">
-    <a href="#about">Dashboard</a>
-  </li>
-  <li class="row py-xl-3">
-    <a href="#services">Product</a>
-  </li>
-  <li class="row py-xl-3">
-    <a href="#clients">Setting</a>
-  </li>
-  <li class="row py-xl-3">
-    <a href="#contact">Cart</a>
-  </li>
-</div>
+      </li> -->
+    </ul>
+  </nav>
 
-<div class="container blog-section" style="width: 1000px; height: 500px; background-color:#4B515D">
-  <div class="container py-xl-5" style="background-color:#ffffff ">
-    Dashboard Index page
+  <div class="container">
+  <div class="row">
+    <div class="col-xl-1">
+      <div class="sidenav vertically-center alert ">
+        <br><br>
+        <li class="row py-xl-3" style="background-color:#4B515D">
+          <%=  link_to 'Dashboards' , controller: "dashboards" , action: "index", :class => "btn" %>
+        </li>
+        <li class="row py-xl-3">
+          <%=  link_to 'Products' , controller: "products" , action: "index", :class => "btn" %>
+        </li>
+    </div>
   </div>
-  <div class="container my-xl-5 py-xl-5" style="background-color:#ffffff ">
-    Dashboard Index page
-  </div>
-</div>
+      <!-- <li class="row py-xl-3">
+        <a href="#clients">Setting</a>
+      </li>
+      <li class="row py-xl-3">
+        <a href="#contact">Cart</a>
+      </li> -->
+      <div class="col-xl-11" style="width: 1000px; height: 500px; background-color:#4B515D">
+        <br><br><br>
+        <div class="col-xl-12 py-xl-5" style="background-color:#ffffff ">
+          Dashboard Index page
+        </div>
+        <div class="col-xl-12 my-xl-5 py-xl-5" style="background-color:#ffffff ">
+          Dashboard Index page
+        </div>
+      </div>
+    </div>
 
-<!-- </body> -->
+  </div>
+
+    <!-- </body> -->

@@ -8,12 +8,12 @@
   <ul class="nav justify-content-end bg-light" >
     <li class="nav-item">
       <div class="nav-link active" >
-        <%=  link_to 'Login' , 'http://localhost:3000/sessions/new', :class => "btn" %>
+        <%=  link_to 'Login' , controller: "sessions", action: "new", :class => "btn" %>
       </div>
     </li>
     <li class="nav-item">
       <div class="nav-link active" >
-        <%=  link_to 'Sign Up' , 'http://localhost:3000/registrations/new', :class => "btn" %>
+        <%=  link_to 'Sign Up' , controller: "registrations", action: "new", :class => "btn" %>
       </div>
     </li>
   </ul>

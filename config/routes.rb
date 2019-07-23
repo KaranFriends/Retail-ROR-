@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :registrations
   resources :sessions
   resources :dashboards
+  resources :products
 end
