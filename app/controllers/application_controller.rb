@@ -7,13 +7,13 @@ class ApplicationController < ActionController::Base
   # logging out removes it.
   private
 
-  def current_user
-    @_current_user ||= session[:current_user_id] &&
-    User.find_by(id: session[:current_user_id])
-  end
+  # def current_user
+  #   @_current_user ||= session[:current_user_id] &&
+  #   User.find_by(id: session[:current_user_id])
+  # end
 
   def require_login
-    if User.find_by(id  :session[:current_user_id])
+    unless User.find_by(id: session[:current_user_id])
       render template: "sessions/invalid" # halts request cycle
     end
   end

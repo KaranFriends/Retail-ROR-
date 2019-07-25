@@ -1,9 +1,11 @@
 class SessionsController < ApplicationController
+  skip_before_action :require_login, only: [:new,:create]
+def index
+
+end
   def new
     @user = User.new
   end
-
-
 
   # def create
   #     if user = User.authenticate(params[:user_name], params[:password])
@@ -14,8 +16,8 @@ class SessionsController < ApplicationController
   #     end
   #   end
   def create
-     if user = User.authenticate(params[:user][:username], params[:user][:password])
-    #if user = User.find_by( user_name: params[:user][:user_name]) && User.find_by(password: params[:user][:password])
+    #if user = User.authenticate(params[:user][:username], params[:user][:password])
+    if user = User.find_by( user_name: params[:user][:user_name]) && User.find_by(password: params[:user][:password])
       # Save the user ID in the session so it can be used in
       # subsequent requests
       session[:current_user_id] = user.id
@@ -47,12 +49,14 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-      # Remove the user id from the session
-      @_current_user = session[:current_user_id] = nil
-      flash[:notice] = "You have successfully logged out."
-      render plain:"You have been logged out"
-    end
-
+    # Remove the user id from the session
+    @_current_user = session[:current_user_id] = nil
+    flash[:notice] = "You have successfully logged out."
+    # render plain:"You have been logged out"
+    redirect_to registrations_path
+  end
+def show
+end
   private
   def article_params
     params.require(:user).permit(:user_name, :password)

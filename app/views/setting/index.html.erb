@@ -76,21 +76,21 @@
 
 
 <!-- <body style="background-color:#4B515D"> -->
-<div class="container-fluid">
+<div class="sidenav vertically-center alert" style="background-color:#4B515D; width: 180px;">
+  <br><br>
+  <li class="row py-xl-2 px-xl-2" >
+    <%=  link_to 'Dashboard' , controller: "dashboards" , action: "index", :class => "btn" %>
+  </li>
+  <li class="row py-xl-2 px-xl-2">
+    <%=  link_to 'Products' , controller: "products" , action: "index", :class => "btn" %>
+  </li>
+  <li class="row py-xl-2 px-xl-2" style="background-color:#ffffff">
+    <%=  link_to 'Settings' , controller: "setting" , action: "index", :class => "btn" %>
+  </li>
+</div>
+<div class="container">
   <div class="row">
     <div class="col-xl-2" style="background-color:#ffffff">
-      <div class="sidenav vertically-center alert" style="background-color:#4B515D; width: 180px;">
-        <br><br>
-        <li class="row py-xl-2 px-xl-2" >
-          <%=  link_to 'Dashboard' , controller: "dashboards" , action: "index", :class => "btn" %>
-        </li>
-        <li class="row py-xl-2 px-xl-2" style="background-color:#ffffff">
-          <%=  link_to 'Products' , controller: "products" , action: "index", :class => "btn" %>
-        </li>
-        <li class="row py-xl-2 px-xl-2">
-          <%=  link_to 'Settings' , controller: "setting" , action: "index", :class => "btn" %>
-        </li>
-      </div>
     </div>
     <!-- <li class="row py-xl-3">
     <a href="#clients">Setting</a>
@@ -98,17 +98,60 @@
   <li class="row py-xl-3">
   <a href="#contact">Cart</a>
 </li> -->
-<div class="col-xl-10" style="width: 1000px;">
-  <div class="row">
-    <% @product.each do |product| %>
-    <div class="col-sm-3 py-md-3 mx-md-3 border border-dark" style="background-color:#ffffff ">
-      <br>
-      <%= product.name %> <br>
-      <%= product.description %> <br>
-      <%= product.price %> <br>
+<div class="col-xl-10" style="width: 1000px; height: 500px; background-color:#4B515D">
+    <div class="px-xl-5 py-xl-5">
+      <%= form_for @user, url: { action: "create" }, :html => {:class => "form-horizontal center text-light"} do |f| %>
+      <div class="row">
+
+        <div class="col-xl-6">
+          <div class="row pl-xl-3">
+            <%= f.label :email, "Email:", class: " control-label" %>
+          </div>
+          <%= f.text_field :email, class: "form-control" %>
+        </div>
+        <div class="col-xl-6">
+          <div class="row pl-xl-3">
+            <%= f.label :password, "Password:", class: " control-label" %>
+          </div>
+
+          <%= f.text_field :password, class: "form-control" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-6">
+          <div class="row pl-xl-3 py-xl-2">
+            <%= f.label :user_name, "User Name:", class: " control-label" %>
+          </div>
+          <%= f.text_field :user_name, class: "form-control" %>
+        </div>
+        <div class="col-xl-6">
+          <div class="row pl-xl-3 py-xl-2">
+            <%= f.label :phone_number, "Phone Number:", class: " control-label" %>
+          </div>
+
+          <%= f.text_field :phone_number, class: "form-control" %>
+        </div>
+
+      </div>
+      <div class="row pl-xl-3 py-xl-2">
+        <%= f.label :alternate_number, "Alternate Number:", class: " control-label" %>
+      </div>
+      <div class="row">
+
+        <div class="col-xl-6">
+          <%= f.text_field :alternate_number, class: "form-control" %>
+        </div>
+      </div>
+
+
+
+      <div class="row pt-xl-5 pl-xl-3">
+
+        <%= f.submit "Submit", class: "btn btn-default btn-primary" %>
+      </div>
+      <% end %>
+
     </div>
-    <% end %>
-  </div>
 </div>
 </div>
 <!-- <div class="col-xl-1">
