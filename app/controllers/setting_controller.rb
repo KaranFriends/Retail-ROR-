@@ -1,11 +1,11 @@
 class SettingController < ApplicationController
   def index
-    @user = User.new
+    @user = User.find_by(id: session[:current_user_id])
   end
+
   def update
-    render plain:"anshduiahsdus"
-  end
-  def create
-render plain:"fuahduohaosdhoias"
+    # render plain: params
+    @p = User.find(session[:current_user_id])
+    @p.update(params.require(:user).permit(:email,:password,:user_name,:phone_number,:alternate_number))
   end
 end

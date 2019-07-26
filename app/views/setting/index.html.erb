@@ -52,15 +52,15 @@
       <%#  link_to 'Home' , 'sessions/new', :class => "btn nav-link" %>
     </li> -->
   </ul>
-  <ul class="nav justify-content-end bg-light" >
+  <ul class="nav justify-content-end bg-light">
     <li class="nav-item">
       <div class="nav-link active" >
-        <%=  link_to 'Home' , controller: "dashboards", action: "index", :class => "btn" %>
+        <%=  link_to 'Home' , { controller: "dashboards", action: "index"}, :class => "btn" %>
       </div>
     </li>
     <li class="nav-item">
       <div class="nav-link active" >
-        <%= link_to 'Log Out' , controller: "sessions", action: "destroy", id: session[:current_user_id], :class => "btn", data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'Log Out', { controller: "sessions", action: "destroy", id: session[:current_user_id]}, :class => "btn", method: 'delete' %>
       </div>
     </li>
   </ul>
@@ -99,59 +99,56 @@
   <a href="#contact">Cart</a>
 </li> -->
 <div class="col-xl-10" style="width: 1000px; height: 500px; background-color:#4B515D">
-    <div class="px-xl-5 py-xl-5">
-      <%= form_for @user, url: { action: "create" }, :html => {:class => "form-horizontal center text-light"} do |f| %>
-      <div class="row">
+  <div class="px-xl-5 py-xl-5">
+    <%= form_for @user, url: { action: "update", id: session[:current_user_id]}, :html => {:class => "form-horizontal center text-light"} do |f| %>
+    <div class="row">
 
-        <div class="col-xl-6">
-          <div class="row pl-xl-3">
-            <%= f.label :email, "Email:", class: " control-label" %>
-          </div>
-          <%= f.text_field :email, class: "form-control" %>
+      <div class="col-xl-6">
+        <div class="row pl-xl-3">
+          <%= f.label :email, "Email:", class: " control-label" %>
         </div>
-        <div class="col-xl-6">
-          <div class="row pl-xl-3">
-            <%= f.label :password, "Password:", class: " control-label" %>
-          </div>
-
-          <%= f.text_field :password, class: "form-control" %>
+        <%= f.text_field :email, :value => @user.email, class: "form-control" %>
+      </div>
+      <div class="col-xl-6">
+        <div class="row pl-xl-3">
+          <%= f.label :password, "Password:", class: " control-label" %>
         </div>
+        <%= f.text_field :password, :value => @user.password, class: "form-control" %>
       </div>
-      <div class="row">
-        <div class="col-xl-6">
-          <div class="row pl-xl-3 py-xl-2">
-            <%= f.label :user_name, "User Name:", class: " control-label" %>
-          </div>
-          <%= f.text_field :user_name, class: "form-control" %>
+    </div>
+    <div class="row">
+      <div class="col-xl-6">
+        <div class="row pl-xl-3 py-xl-2">
+          <%= f.label :user_name, "User Name:", class: " control-label" %>
         </div>
-        <div class="col-xl-6">
-          <div class="row pl-xl-3 py-xl-2">
-            <%= f.label :phone_number, "Phone Number:", class: " control-label" %>
-          </div>
-
-          <%= f.text_field :phone_number, class: "form-control" %>
+        <%= f.text_field :user_name,:value => @user.user_name, class: "form-control" %>
+      </div>
+      <div class="col-xl-6">
+        <div class="row pl-xl-3 py-xl-2">
+          <%= f.label :phone_number, "Phone Number:", class: " control-label" %>
         </div>
-
+        <%= f.text_field :phone_number,:value => @user.phone_number, class: "form-control" %>
       </div>
-      <div class="row pl-xl-3 py-xl-2">
-        <%= f.label :alternate_number, "Alternate Number:", class: " control-label" %>
-      </div>
-      <div class="row">
-
-        <div class="col-xl-6">
-          <%= f.text_field :alternate_number, class: "form-control" %>
-        </div>
-      </div>
-
-
-
-      <div class="row pt-xl-5 pl-xl-3">
-
-        <%= f.submit "Submit", class: "btn btn-default btn-primary" %>
-      </div>
-      <% end %>
 
     </div>
+    <div class="row pl-xl-3 py-xl-2">
+      <%= f.label :alternate_number, "Alternate Number:", class: " control-label" %>
+    </div>
+    <div class="row">
+      <div class="col-xl-6">
+        <%= f.text_field :alternate_number,:value => @user.alternate_number, class: "form-control" %>
+      </div>
+    </div>
+
+
+
+    <div class="row pt-xl-5 pl-xl-3">
+
+      <%= f.submit "Submit", class: "btn btn-default btn-primary", data: { confirm: 'Are you sure ?' }  %>
+    </div>
+    <% end %>
+
+  </div>
 </div>
 </div>
 <!-- <div class="col-xl-1">

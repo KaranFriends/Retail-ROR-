@@ -12,8 +12,8 @@ class RegistrationsController < ApplicationController
     #render plain: params.require(:user)
 
     @user = User.new(params.require(:user).permit(:user_name,:password,:email,:password,:phone_number,:alternate_number))
-
     @user.save
+
     render 'index'
   end
 end

@@ -51,11 +51,12 @@ end
   def destroy
     # Remove the user id from the session
     @_current_user = session[:current_user_id] = nil
-    flash[:notice] = "You have successfully logged out."
+    # flash[:notice] = "You have successfully logged out."
     # render plain:"You have been logged out"
     redirect_to registrations_path
   end
 def show
+  render plain:session[:current_user_id]
 end
   private
   def article_params
