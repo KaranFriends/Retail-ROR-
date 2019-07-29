@@ -1,35 +1,39 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="utf-8">
-  <title></title>
-</head>
 <body style="background-color:#4B515D">
+
   <ul class="nav justify-content-end bg-light" >
+
     <li class="nav-item">
+
       <div class="nav-link active" >
-        <%=  link_to 'Login' , controller: "sessions", action: "new", :class => "btn" %>
+        <%=  link_to 'Login' , controller: "session", action: "new", :class => "btn" %>
       </div>
     </li>
+
     <li class="nav-item">
+
       <div class="nav-link active" >
-        <%=  link_to 'Sign Up' , controller: "registrations", action: "new", :class => "btn" %>
+        <%=  link_to 'Sign Up' , controller: "registration", action: "new", :class => "btn" %>
       </div>
     </li>
   </ul>
 
   <div align="center" class="container " style="width: 1000px; background-color:#3E4551">
+
     <div class="px-xl-5 py-xl-5">
       <%= form_for @user, url: { action: "create" }, :html => {:class => "form-horizontal center text-light"} do |f| %>
+
       <div class="row">
 
         <div class="col-xl-6">
+
           <div class="row pl-xl-3">
             <%= f.label :email, "Email:", class: " control-label" %>
           </div>
           <%= f.text_field :email, class: "form-control" %>
         </div>
+
         <div class="col-xl-6">
+
           <div class="row pl-xl-3">
             <%= f.label :password, "Password:", class: " control-label" %>
           </div>
@@ -37,14 +41,19 @@
           <%= f.text_field :password, class: "form-control" %>
         </div>
       </div>
+
       <div class="row">
+
         <div class="col-xl-6">
+
           <div class="row pl-xl-3 py-xl-2">
             <%= f.label :user_name, "User Name:", class: " control-label" %>
           </div>
           <%= f.text_field :user_name, class: "form-control" %>
         </div>
+
         <div class="col-xl-6">
+
           <div class="row pl-xl-3 py-xl-2">
             <%= f.label :phone_number, "Phone Number:", class: " control-label" %>
           </div>
@@ -53,17 +62,17 @@
         </div>
 
       </div>
+
       <div class="row pl-xl-3 py-xl-2">
         <%= f.label :alternate_number, "Alternate Number:", class: " control-label" %>
       </div>
+
       <div class="row">
 
         <div class="col-xl-6">
           <%= f.text_field :alternate_number, class: "form-control" %>
         </div>
       </div>
-
-
 
       <div class="row pt-xl-5 pl-xl-3">
 
@@ -74,4 +83,3 @@
     </div>
   </div>
 </body>
-</html>
