@@ -28,7 +28,7 @@ class SessionController < ApplicationController
 
   def destroy
     @current_user = session[:current_user_id] = nil
-    redirect_to registration_path
+    redirect_to registration_index_path
   end
 
   def show

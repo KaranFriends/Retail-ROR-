@@ -10,7 +10,7 @@ class SettingController < ApplicationController
   def update
     # render plain: params
     @p = User.find(session[:current_user_id])
-    @p.update(params.require(:user).permit(:email,:password,:user_name,:phone_number,:alternate_number,:picture))
+    @p.update(article_params)
   end
 
   def destroy
