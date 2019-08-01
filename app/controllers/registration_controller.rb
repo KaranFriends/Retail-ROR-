@@ -6,13 +6,13 @@ class RegistrationController < ApplicationController
   end
 
   def create
-    @user = User.new(article_params)
+    @user = User.new(parameter)
     @user.save
     render 'index'
   end
 
   private
-  def article_params
-    params.require(:user).permit(:user_name,:password,:email,:password,:phone_number,:alternate_number)
+  def parameter
+    params.require(:user).permit(:user_name,:password,:email,:password,:phone_number,:alternate_number,:picture)
   end
 end

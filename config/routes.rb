@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :dashboard
   resources :product
   resources :setting
+  resources :manage_products
 end

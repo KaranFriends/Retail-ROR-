@@ -9,14 +9,13 @@ class SessionController < ApplicationController
   end
 
   def create
-    if @validity = User.find_by(user_name: article_params[:user_name])
-      if @validity.password == article_params[:password]
-        session[:current_user_id] = @validity.id
-        current_user
-        redirect_to controller: 'dashboard', action: 'index'
-      else
-        invalid
-      end
+    # if @user = User.where(user_name: parameter[:user_name]).first
+    #   if @user.password == parameter[:password]
+    if @user = User.authenticate(parameter)
+      session[:current_user_id] = @user.id
+      current_user
+      flash[:success] = "You have logged in"
+      redirect_to controller: 'dashboard', action: 'index'
     else
       invalid
     end
@@ -36,7 +35,7 @@ class SessionController < ApplicationController
   end
 
   private
-  def article_params
+  def parameter
     params.require(:user).permit(:user_name, :password)
   end
 
