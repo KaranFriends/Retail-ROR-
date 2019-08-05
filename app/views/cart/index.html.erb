@@ -1,0 +1,36 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<%# render "layouts/home_logout" %>
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="col-xl-2" style="background-color:#ffffff">
+
+      <%= render "layouts/side_navbar" %>
+    </div>
+
+    <div class="col-xl-10" style="width: 1000px;">
+
+      <div class="row">
+        <% @cart_item.each do |cart| %>
+
+        <div class="col-sm-3 py-md-3 mx-md-3 border border-dark" style="background-color:#ffffff ">
+          <%# <%= link_to product_path(id: product.id) do  %>
+          <br>
+
+          <%= cart.product_id %>
+          <%# <%= cart.name %> <br>
+          <%# <%= cart.description %> <br>
+          <%# <%= cart.price %> <br>
+          <%# <% end %>
+          <%# render "plusminus"%>
+          <%= button_to "remove", cart_path(id: cart.id), method: "delete"%>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>

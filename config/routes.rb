@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resources :product
   resources :setting
   resources :manage_products
+  resources :cart
 end

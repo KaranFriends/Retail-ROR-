@@ -1,0 +1,11 @@
+<% if exists %>
+  <% flash[:exists] = "item already exists in cart" %>
+  <div class="alert alert-success ">
+  <%= flash[:exists] %>
+  </div>
+<% else %>
+  <% flash[:added] = "item successfully added to the cart"%>
+  <div class="alert alert-success ">
+    <%= flash[:added] %>
+  </div>
+<% end %>

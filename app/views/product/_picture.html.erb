@@ -1,0 +1,7 @@
+<%#  @user.picture  %>
+<% image_present = product_pic.product_picture.blob.present? rescue nil %>
+<% if( image_present ) %>
+  <%= image_tag(product_pic.product_picture, size: "100") %>
+<% else %>
+  <%=  image_tag(:no_product, size: "100") %>
+<% end %>
