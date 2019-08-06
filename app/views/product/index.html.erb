@@ -24,7 +24,6 @@
           Description: <%= product.description %><br>
           Price:       <%= product.price %><br>
           <% end %>
-          <%= render "plusminus"%>
           <%= button_to "Add to Cart", cart_path(id: @cart.id, product_id: product.id, status: "new", quantity: "1"), method: "put", remote: true%>
         </div>
         <% end %>

@@ -24,11 +24,25 @@
           Description: <%= product.description %><br>
           Price:       <%= product.price %><br>
           <% end %>
+          Quantity:     <div class="counter">
+            <% @cart_item.each do |cart_item| %>
+              <% if cart_item.product_id == product.id %>
+                <%= cart_item.quantity.to_i %>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="button_group">
+            <%=  link_to '+1' , cart_quantity_update_path(product: product.id), method: "post" , class: "add" %>
 
-          <%# render "plusminus"%>
-          <%= button_to "remove", cart_path(id: @cart.id), method: "delete"%> <%# remote: true %>
+            <button class="subtract">- 1</button>
+
+            <!-- <button class="add">+ 1</button> -->
+
+          </div>
+          <%= button_to "Remove", cart_path(id: @cart.id), method: "delete"%>
         </div>
         <% end %>
+        <%= button_to "Place Order",new_order_path %>
       </div>
     </div>
   </div>
