@@ -8,7 +8,7 @@
 
     <div class="col-xl-2">
 
-      <%= render "layouts/side_navbar" %>
+      <%= render partial: "layouts/side_navbar", locals: {selected: "manage_products"} %>
     </div>
 
     <div class="col-xl-10" style="width: 1000px; height: 500px; background-color:#4B515D">
@@ -26,8 +26,10 @@
         </div>
         <% end %>
         <% end %>
-        <div class="col-xl-3 py-md-3 mx-md-3 border border-dark" style="background-color:#ffffff; width: 300px; height: 100px;">
-        <%= link_to 'Add',new_manage_product_path %>
+        <div class="col-xl-3 py-md-3 mx-md-3 border border-dark text-center" style="background-color:#ffffff; width: 300px; height: 100px;">
+          <%= link_to new_manage_product_path do%>
+            <%= image_tag("add_icon.png",size: "60") %>
+          <%end%>
           <br>
           <%# product.id %>
           <br><br><br>
