@@ -14,19 +14,19 @@
     <div class="col-xl-10" style="width: 1000px;">
 
       <div class="row">
-        <% @cart_item.each do |cart| %>
+        <% @products.each do |product| %>
 
-        <div class="col-sm-3 py-md-3 mx-md-3 border border-dark" style="background-color:#ffffff ">
-          <%# <%= link_to product_path(id: product.id) do  %>
+        <div class="col-sm-3 py-md-3 mx-md-3 border border-dark text-center" style="background-color:#ffffff ">
+          <%= link_to product_path(id: product.id) do  %>
           <br>
+          <%= render partial: "picture", locals: {product_pic: product}%><br>
+          Name:        <%= product.name %> <br>
+          Description: <%= product.description %><br>
+          Price:       <%= product.price %><br>
+          <% end %>
 
-          <%= cart.product_id %>
-          <%# <%= cart.name %> <br>
-          <%# <%= cart.description %> <br>
-          <%# <%= cart.price %> <br>
-          <%# <% end %>
           <%# render "plusminus"%>
-          <%= button_to "remove", cart_path(id: cart.id), method: "delete"%>
+          <%= button_to "remove", cart_path(id: @cart.id), method: "delete"%> <%# remote: true %>
         </div>
         <% end %>
       </div>

@@ -15,6 +15,11 @@ class CartController < ApplicationController
   def index
     @cart = Cart.find_by(user_id: session[:current_user_id])
     @cart_item = CartItem.where(cart_id: @cart,status: "new")
+    @products= Array.new
+    @cart_item.each do |product|
+        @products.push(Product.find_by(id: product.product_id))
+    end
+
   end
 
   def destroy
