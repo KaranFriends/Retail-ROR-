@@ -2,7 +2,7 @@
 Rails.application.routes.draw do
   get 'order/index'
   get 'setting/index'
-  post 'cart/quantity_update'
+  put 'cart/quantity_update'
   #get 'users/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'registration#index'

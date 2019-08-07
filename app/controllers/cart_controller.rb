@@ -28,18 +28,18 @@ class CartController < ApplicationController
   end
 
   def quantity_update
-    # render plain: parameter_quantity_update[:product]
+    if(parameter_quantity_update[:type] == "add")
+      @cart = Cart.find_by(user_id: session[:current_user_id])
+      @cart_item = CartItem.find_by(cart_id: @cart.id, status: "new", product_id: parameter_quantity_update[:product].to_i)
+      @cart_item.update(quantity: (@cart_item.quantity.to_i + 1))
 
-    @cart = Cart.find_by(user_id: session[:current_user_id])
-    @cart_item = CartItem.find_by(cart_id: @cart.id, status: "new", product_id: parameter_quantity_update.to_i)
-    @cart_item.update(quantity: (@cart_item.quantity.to_i + 1))
-    # @cart_item.each do |cart_item|
-    #   if cart_item.product_id == product.id
-    #       cart_item.update(quantity: (cart_item.quantity.to_i + 1))
-    #   end
-    # end
-    # render plain: params.require(:product)
-
+    elsif (parameter_quantity_update[:type] == "subtract")
+      @cart = Cart.find_by(user_id: session[:current_user_id])
+      @cart_item = CartItem.find_by(cart_id: @cart.id, status: "new", product_id: parameter_quantity_update[:product].to_i)
+        if @cart_item.quantity.to_i > 1
+          @cart_item.update(quantity: (@cart_item.quantity.to_i - 1))
+        end
+    end
   end
 
   private
@@ -53,7 +53,7 @@ class CartController < ApplicationController
   end
 
   def parameter_quantity_update
-    params.require(:product)
+    params.permit(:product,:type)
   end
 
 end

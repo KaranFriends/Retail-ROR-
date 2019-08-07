@@ -32,9 +32,9 @@
             <% end %>
           </div>
           <div class="button_group">
-            <%=  link_to '+1' , cart_quantity_update_path(product: product.id), method: "post" , class: "add" %>
-
-            <button class="subtract">- 1</button>
+            <%=  button_to '+1' , cart_quantity_update_path(product: product.id, type: "add"), method: "put" , class: 'add' %>
+            <%=  button_to '-1' , cart_quantity_update_path(product: product.id, type: "subtract"), method: "put" , class: 'subtract' %> 
+            <!-- <button class="subtract">- 1</button> -->
 
             <!-- <button class="add">+ 1</button> -->
 
