@@ -1,0 +1,37 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<%# render "layouts/home_logout" %>
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="col-xl-2">
+
+      <%= render partial: "layouts/side_navbar", locals: {selected: "cart"} %>
+    </div>
+
+    <div class="col-xl-10" style="width: 1000px; height: 500px; background-color:#4B515D">
+      <h1>Select Address</h1>
+      <div class="row py-xl-3">
+        <% @addresses.each do |address| %>
+
+        <div class="col-xl-3 py-md-1 mx-md-3 border border-dark" style="background-color:#ffffff; width: 300px; height: 200px;" align="center">
+          <br>
+          Name:        <%= address.name %> <br>
+          Contact Number: <%= address.contact_number %><br>
+          Address:       <%= address.address %><br>
+          landmark:        <%= address.landmark %> <br>
+          <%= button_to "Place Order with this address",order_index_path(address_id: address.id) , method: "post",data: { confirm: 'Place order ?' } %>
+        </div>
+        <% end %>
+        <div class="col-xl-3 py-md-3 mx-md-3 border border-dark text-center" style="background-color:#ffffff; width: 300px; height: 100px;">
+          <%= link_to dashboard_path(id: current_user.id) do %>
+          <%= image_tag("add_icon.png",size: "60") %>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

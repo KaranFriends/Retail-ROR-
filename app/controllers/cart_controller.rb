@@ -28,11 +28,11 @@ class CartController < ApplicationController
   end
 
   def quantity_update
-    if(parameter_quantity_update[:type] == "add")
+    if parameter_quantity_update[:type] == "add"
       @cart = Cart.find_by(user_id: session[:current_user_id])
       @cart_item = CartItem.find_by(cart_id: @cart.id, status: "new", product_id: parameter_quantity_update[:product].to_i)
       @cart_item.update(quantity: (@cart_item.quantity.to_i + 1))
-
+      
     elsif (parameter_quantity_update[:type] == "subtract")
       @cart = Cart.find_by(user_id: session[:current_user_id])
       @cart_item = CartItem.find_by(cart_id: @cart.id, status: "new", product_id: parameter_quantity_update[:product].to_i)

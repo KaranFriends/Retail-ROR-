@@ -33,16 +33,24 @@
           </div>
           <div class="button_group">
             <%=  button_to '+1' , cart_quantity_update_path(product: product.id, type: "add"), method: "put" , class: 'add' %>
-            <%=  button_to '-1' , cart_quantity_update_path(product: product.id, type: "subtract"), method: "put" , class: 'subtract' %> 
+            <%=  button_to '-1' , cart_quantity_update_path(product: product.id, type: "subtract"), method: "put" , class: 'subtract' %>
+
             <!-- <button class="subtract">- 1</button> -->
 
             <!-- <button class="add">+ 1</button> -->
 
           </div>
-          <%= button_to "Remove", cart_path(id: @cart.id), method: "delete"%>
+          <%= button_to "Remove Item from cart", cart_path(id: @cart.id), method: "delete"%>
         </div>
         <% end %>
-        <%= button_to "Place Order",new_order_path %>
+        <% if @cart_item.count == 0 %>
+          <% flash[:cart_empty] = "Cart is empty" %>
+          <div class="alert alert-danger ">
+          <%= flash[:cart_empty] %>
+          </div>
+        <% else %>
+        <%= link_to "Place Order",new_order_path %>
+        <% end %>
       </div>
     </div>
   </div>
