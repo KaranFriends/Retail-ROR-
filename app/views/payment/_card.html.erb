@@ -1,0 +1,24 @@
+<div class="col-xl-10" style="width: 1000px; height: 500px; background-color:#4B515D">
+    <div class="row py-xl-3">
+    <% cards.each do |card| %>
+
+    <div class="col-xl-3 py-md-1 mx-md-3 border border-dark" style="background-color:#ffffff; width: 300px; height: 200px;" align="center">
+      <br>
+      Card Number:     <%= card.card_number %> <br>
+      cvv:             <%= cart.cvv %><br>
+      Expiry Date:     <%= card.description %><br>
+      card_holder_name:<%= cart.card_holder_name %> <br>
+
+      <%= button_to "Cash On Devlivery", payment_index_path(id: @order_id,payment_id: @payment.id, mode: "cash_on_delivery", status: "pending"), method: 'post', data: { confirm: 'Place Order?' } %>
+
+      <%= button_to "Place Order with this card",payment_index_path(id: @order_id,payment_id: @payment.id, mode: "cash_on_delivery", status: "pending") , method: "post",data: { confirm: 'Place order ?' } %>
+    </div>
+    <% end %>
+    <div class="col-xl-3 py-md-3 mx-md-3 border border-dark text-center" style="background-color:#ffffff; width: 300px; height: 100px;">
+      <%= link_to dashboard_path(id: current_user.id) do %>
+      <%= image_tag("add_icon.png",size: "60") %>
+      <% end %>
+    </div>
+
+  </div>
+</div>

@@ -10,7 +10,8 @@ class User < ApplicationRecord
   has_many :product
   has_many :feedback
   has_one_attached :picture
-
+  has_many :table_card_detail
+  
   def self.authenticate(params)
     if @user = User.where(user_name: params[:user_name]).first
       if @user.password == params[:password]

@@ -1,8 +1,14 @@
 class DashboardController < ApplicationController
   def index
+
     unless Cart.find_by(user_id: session[:current_user_id])
         Cart.create(user_id: session[:current_user_id])
       end
+
+      unless TableCardDetail.find_by(user_id: session[:current_user_id],card_holder_name: "cash_on_delivery_card")
+          TableCardDetail.create(user_id: session[:current_user_id],card_holder_name: "cash_on_delivery_card")
+      end
+
   end
 
   def address

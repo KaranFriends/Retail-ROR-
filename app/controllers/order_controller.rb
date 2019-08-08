@@ -15,14 +15,13 @@ class OrderController < ApplicationController
       product = Product.find_by(id: cart_item.product_id)
       @OrderItem = OrderItem.create(order_id: @order.id, product_id: product.id, name: product.name,description: product.description, price:  product.price.to_i * cart_item.quantity.to_i , brand: product.brand, date_first_available: product.date_first_available,quantity: cart_item.quantity)
       cart_item.update(status: "old")
-      @price += product.price.to_i
+      @price += @OrderItem.price.to_i
 
     end
 
     @order.update(price: @price)
 
-    render "show"
-
+    redirect_to new_payment_path(order_id: @order.id)
   end
 
 end
