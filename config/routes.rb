@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'payment/create'
+  get 'addresses/index'
+  get 'cards/index'
   get 'setting/index'
   put 'cart/quantity_update'
   #get 'users/index'
@@ -15,7 +16,11 @@ Rails.application.routes.draw do
   resources :cart
   resources :order
 
-  resources :payment 
+  resources :payment
+  
+  resources :cards
+  resources :addresses
 
   post 'dashboard/address'
+
 end

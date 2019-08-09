@@ -6,26 +6,35 @@ class PaymentController < ApplicationController
   def new
     @order_id = parameter_order_id
     @price = Order.find_by(id: @order_id).price
-    @card = TableCardDetail.find_by(user_id: session[:current_user_id], card_holder_name: "cash_on_delivery_card")
-    @payment = Payment.create(order_id: @order_id,status: "pending",table_card_detail_id: @card.id)
+    @payment = Payment.create(order_id: @order_id,status: "pending")
     @payment.save
+
   end
 
   def create
-    @payment = Payment.find_by(id: parameter[:payment_id])
+
+    @payment = Payment.find_by(id: parameter[:id])
     @payment.update(mode: parameter[:mode],status: parameter[:status])
     @payment.save
     redirect_to dashboard_index_path
+
   end
 
-  def show
-    # @order_id = parameter[:id]
-    @payment_id = parameter[:payment_id]
-    @payment = Payment.find_by(id: @payment_id)
-    @payment.update(mode: parameter[:mode],status: parameter[:status])
-
-    @cards = table_card_details.where(user_id: session[:current_user_id])
+  def update
+    @payment = Payment.find_by(id: parameter[:payment_id])
+    @payment.update(table_card_detail_id: parameter[:id],status: "amount Paid")
+    redirect_to dashboard_index_path
   end
+
+  # def show
+  # # @order_id = parameter[:id]
+  # # debugger
+  #   @payment_id = parameter[:id]
+  #   @payment = Payment.find_by(id: @payment_id)
+  #   @payment.update(mode: parameter[:mode],status: parameter[:status])
+  #
+  #   @cards = TableCardDetail.where(user_id: session[:current_user_id])
+  # end
 
   private
 
@@ -34,6 +43,10 @@ class PaymentController < ApplicationController
   end
 
   def parameter
+    params.permit(:id,:payment_id)
+  end
+
+  def parameter_update
     params.permit(:id,:mode,:status,:payment_id)
   end
 
