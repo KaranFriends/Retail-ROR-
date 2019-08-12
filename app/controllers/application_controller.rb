@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :require_login
-  
+
   private
 
   def current_user
@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   def require_login
     unless User.find_by(id: session[:current_user_id])
-      render template: "session/invalid"
+      render template: "layouts/invalid"
     end
   end
 

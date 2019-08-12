@@ -11,18 +11,18 @@
       <%= render partial:"layouts/side_navbar", locals: {selected: "products"} %>
     </div>
 
-    <div class="col-xl-10" style="width: 1000px;">
+    <div class="col-xl-9" style="width: 1000px;">
 
       <div class="row">
         <% @products.each do |product| %>
 
         <div class="col-sm-3 py-md-3 mx-md-3 border border-dark" style="background-color:#ffffff" align="center">
-          <%= link_to product_path(id: product.id) do  %>
-          <br>
-          <%= render partial: "picture", locals: {product_pic: product}%><br>
-          Name:        <%= product.name %> <br>
-          Description: <%= product.description %><br>
-          Price:       <%= product.price %><br>
+          <%= link_to product_path(id: @cart.id, product_id: product.id, status: "new", quantity: "1") do  %>
+            <br>
+            <%= render partial: "picture", locals: {product_pic: product}%><br>
+            Name:        <%= product.name %> <br>
+            Description: <%= product.description %><br>
+            Price:       <%= product.price %><br>
           <% end %>
           <%= button_to "Add to Cart", cart_path(id: @cart.id, product_id: product.id, status: "new", quantity: "1"), method: "put", remote: true%>
         </div>

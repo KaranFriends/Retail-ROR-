@@ -1,6 +1,11 @@
 <body style="background-color:#4B515D">
 
-  <%= render "navbar" %>
+  <%# <%= render "navbar" %>
+  <% if @user.errors[:user_name].any? %>
+    <div class="alert alert-danger" role="alert">
+        User Name<%= @user.errors[:user_name].to_s %>
+    </div>
+  <%end%>
 
   <div align="center" class="container " style="width: 1000px; background-color:#3E4551">
 

@@ -14,25 +14,20 @@ class ManageProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find_by(id: parameter.to_i)
+    @product = Product.find_by(id: params[:id])
   end
 
   def update
-    @product = Product.find_by(id: parameter.to_i)
+    @product = Product.find_by(id: params[:id])
     @product.update(parameter_for)
   end
 
   def destroy
-    @product = Product.find_by(id: parameter.to_i)
+    @product = Product.find_by(id: params[:id])
     @product.product_picture.purge
-    # @word = "hi"
   end
 
   private
-
-  def parameter
-    params.require(:id)
-  end
 
   def parameter_for
     params.require(:product).permit(:name,:description,:price,:brand,:date_first_available,:product_picture,:user_id)

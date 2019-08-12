@@ -11,7 +11,7 @@
       <%= render partial: "layouts/side_navbar", locals: {selected: "manage_products"} %>
     </div>
 
-    <div class="col-xl-10" style="width: 1000px; background-color:#4B515D">
+    <div class="col-xl-9" style="width: 1000px; background-color:#4B515D">
 
       <div class="px-xl-5 py-xl-5">
         <%= form_for @product, url: manage_product_path(id: @product.id), method: "put", html: {class: "form-horizontal center text-light"}, remote: true do |f| %>

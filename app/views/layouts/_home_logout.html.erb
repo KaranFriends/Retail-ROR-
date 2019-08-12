@@ -4,7 +4,7 @@
     <%# <%= current_user %>
     Hi !!
     <% if current_user %>
-    <%= User.find_by(id: current_user.id).user_name %>
+      <%= User.find_by(id: current_user.id).user_name %>
     <% end %>
     <!-- <li class="nav-item active">
       <%#  link_to 'Home' , 'sessions/new', :class => "btn nav-link" %>
@@ -16,7 +16,7 @@
     <li class="nav-item">
 
       <div class="nav-link active" >
-        <%=  link_to 'Home' , dashboard_index_path, class: "btn" %>
+        <%=  link_to 'Home' , dashboard_path, class: "btn" %>
       </div>
     </li>
 
@@ -24,8 +24,8 @@
 
       <div class="nav-link active" >
         <% if current_user %>
-        <%= link_to 'Log Out', session_path(id: current_user.id), class: "btn", method: 'delete' %>
-    <% end %>
+          <%= link_to 'Log Out', session_path(id: current_user.id), class: "btn", method: 'delete' %>
+        <% end %>
       </div>
     </li>
   </ul>

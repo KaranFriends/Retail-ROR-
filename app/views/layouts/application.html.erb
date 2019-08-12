@@ -12,13 +12,22 @@
 
 <body class="h6">
   <% if session[:current_user_id] != nil %>
-  <%= render "layouts/home_logout" %>
+      <%= render "layouts/home_logout" %>
+    <% else %>
+      <%= render "layouts/login_signup"%>
   <% end %>
   <% if flash[:success] %>
-  <div class="alert alert-success ">
-    <%= flash[:success] %>
-  </div>
+    <div class="alert alert-success ">
+      <%= flash[:success] %>
+    </div>
   <% end %>
+
+  <% if flash[:danger] %>
+    <div class="alert alert-danger ">
+      <%= flash[:danger] %>
+    </div>
+  <% end %>
+
   <div class="flashMessages"></div>
   <%= yield %>
 </body>

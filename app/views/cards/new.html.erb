@@ -9,7 +9,7 @@
       <%= render partial: "layouts/side_navbar",locals: {selected: "cart"}%>
     </div>
 
-    <div class="col-xl-10" style="width: 1000px; background-color:#4B515D">
+    <div class="col-xl-9" style="width: 1000px; background-color:#4B515D">
 
       <div class="px-xl-5 py-xl-5">
         <%= form_for :card, url: cards_path(id: @payment), method: "post", html: {class: "form-horizontal center text-light"} do |f| %>

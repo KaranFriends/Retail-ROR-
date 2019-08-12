@@ -11,7 +11,7 @@
       <%= render partial: "layouts/side_navbar",locals: {selected: "cart"} %>
     </div>
 
-    <div class="col-xl-10" style="width: 1000px;">
+    <div class="col-xl-9" style="width: 1000px;">
 
       <div class="row">
         <% @products.each do |product| %>
@@ -46,11 +46,19 @@
         <% if @cart_item.count == 0 %>
           <% flash[:cart_empty] = "Cart is empty" %>
           <div class="alert alert-danger ">
-          <%= flash[:cart_empty] %>
+            <%= flash[:cart_empty] %>
           </div>
-        <% else %>
-        <%= link_to "Place Order",new_order_path %>
         <% end %>
+      </div>
+      <div class="row">
+        <div class="col-sm-10">
+
+        </div>
+        <div class="col-sm-2">
+          <% if @products.count !=0 %>
+            <%= link_to "Place Order",new_order_path ,class: "btn"%>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

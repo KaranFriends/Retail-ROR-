@@ -8,7 +8,6 @@ class CardsController < ApplicationController
     @payment = Payment.find_by(id: @payment_id)
     @payment.update(mode: parameter_index[:mode],status: parameter_index[:status])
     @cards = TableCardDetail.where(user_id: session[:current_user_id])
-
   end
 
   def create

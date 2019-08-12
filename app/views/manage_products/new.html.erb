@@ -11,7 +11,7 @@
       <%= render partial: "layouts/side_navbar", locals: {selected: "manage_products"} %>
     </div>
 
-    <div class="col-xl-10" style="width: 1000px; background-color:#4B515D">
+    <div class="col-xl-9" style="width: 1000px; background-color:#4B515D">
 
       <div class="px-xl-5 py-xl-5">
         <%= form_for @product, url: manage_products_path, method: "post", html: {class: "form-horizontal center text-light"} do |f| %>
@@ -20,76 +20,68 @@
 
           <div class="col-xl-6">
 
-            <!-- <div class="row pl-xl-3 has_picture">
-              <%# render partial: "picture" %>
-            </div> -->
-
-            <!-- <div class="row testClass">
-              <%# render partial: "hello", locals: {word: "hello"} %>
-            </div> -->
-
-            <div class="py-xl-3">
-              <%= f.file_field :product_picture,class: "btn btn-default btn-primary" %>
-              <%= f.hidden_field :user_id,value: current_user.id %>
-            </div>
+          <div class="py-xl-3">
+            <%= f.file_field :product_picture,class: "btn btn-default btn-primary" %>
+            <%= f.hidden_field :user_id,value: current_user.id %>
           </div>
         </div>
-
-        <div class="row">
-
-          <div class="col-xl-6">
-
-            <div class="row pl-xl-3">
-              <%= f.label "Name:", class: " control-label" %>
-            </div>
-            <%= f.text_field :name, class: "form-control" %>
-          </div>
-
-          <div class="col-xl-6">
-
-            <div class="row pl-xl-3">
-              <%= f.label "Description:", class: " control-label" %>
-            </div>
-            <%= f.text_area :description, class: "form-control" %>
-          </div>
-        </div>
-
-        <div class="row">
-
-          <div class="col-xl-6">
-
-            <div class="row pl-xl-3 py-xl-2">
-              <%= f.label "Price:", class: " control-label" %>
-            </div>
-            <%= f.text_field :price, class: "form-control" %>
-          </div>
-
-          <div class="col-xl-6">
-
-            <div class="row pl-xl-3 py-xl-2">
-              <%= f.label "Brand:", class: " control-label" %>
-            </div>
-            <%= f.text_field :brand, class: "form-control" %>
-          </div>
-
-        </div>
-
-        <div class="row pl-xl-3 py-xl-2">
-          <%= f.label  "Date First Availabe:", class: " control-label" %>
-        </div>
-
-        <div class="row">
-
-          <div class="col-xl-6">
-            <%= f.text_field :date_first_available, class: "form-control" %>
-          </div>
-        </div>
-
-        <div class="row pt-xl-5 pl-xl-3">
-          <%= f.submit "Submit", class: "btn btn-default btn-primary", data: { confirm: 'Are you sure ?' }  %>
-        </div>
-        <% end %>
       </div>
+
+      <div class="row">
+
+        <div class="col-xl-6">
+
+          <div class="row pl-xl-3">
+            <%= f.label "Name:", class: " control-label" %>
+          </div>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+
+        <div class="col-xl-6">
+
+          <div class="row pl-xl-3">
+            <%= f.label "Description:", class: " control-label" %>
+          </div>
+          <%= f.text_area :description, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-xl-6">
+
+          <div class="row pl-xl-3 py-xl-2">
+            <%= f.label "Price:", class: " control-label" %>
+          </div>
+          <%= f.text_field :price, class: "form-control" %>
+        </div>
+
+        <div class="col-xl-6">
+
+          <div class="row pl-xl-3 py-xl-2">
+            <%= f.label "Brand:", class: " control-label" %>
+          </div>
+          <%= f.text_field :brand, class: "form-control" %>
+        </div>
+
+      </div>
+
+      <div class="row pl-xl-3 py-xl-2">
+        <%= f.label  "Date First Availabe:", class: " control-label" %>
+      </div>
+
+      <div class="row">
+
+        <div class="col-xl-6">
+          <%= f.text_field :date_first_available, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="row pt-xl-5 pl-xl-3">
+        <%= f.submit "Submit", class: "btn btn-default btn-primary", data: { confirm: 'Are you sure ?' }  %>
+      </div>
+      <% end %>
     </div>
   </div>
+</div>
 </div>

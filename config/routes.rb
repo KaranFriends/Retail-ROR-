@@ -7,17 +7,15 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'registration#index'
 
-  resources :registration
-  resources :session
-  resources :dashboard
+  resource :registration
+  resource :session
+  resource :dashboard
   resources :product
-  resources :setting
+  resource :setting
   resources :manage_products
-  resources :cart
-  resources :order
-
-  resources :payment
-  
+  resource :cart
+  resource :order
+  resource :payment
   resources :cards
   resources :addresses
 

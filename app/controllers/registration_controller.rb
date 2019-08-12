@@ -9,8 +9,10 @@ class RegistrationController < ApplicationController
     @user = User.new(parameter)
     if @user.save
       EmailMailer.sign_up(@user.email,@user.user_name).deliver_now
+      render 'index'
+    else
+      render 'new'
     end
-    render 'index'
   end
 
   private

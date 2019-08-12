@@ -3,16 +3,16 @@
   <button class="subtract" type="submit">
     - 1
     <% @cart_item.each do |count_update| %>
-    <% if count_update.product_id == product.id %>
+      <% if count_update.product_id == product.id %>
         <% count_update.update(quantity: count_update.quantity.to_i - 1) %>
-    <% end %>
+      <% end %>
     <% end %>
   </button>
   <button class="add" type="submit">+ 1
     <% @cart_item.each do |count_update| %>
-    <% if count_update.product_id == product.id %>
+      <% if count_update.product_id == product.id %>
         <% count_update.update(quantity: count_update.quantity.to_i + 1) %>
-    <% end %>
+      <% end %>
     <% end %>
   </button>
 </div>

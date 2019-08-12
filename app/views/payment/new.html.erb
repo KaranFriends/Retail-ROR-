@@ -11,7 +11,7 @@
       <%= render partial: "layouts/side_navbar", locals: {selected: "cart"} %>
     </div>
 
-    <div class="col-xl-10" style="width: 1000px; background-color:#4B515D">
+    <div class="col-xl-9" style="width: 1000px; background-color:#4B515D">
 
       <div class="px-xl-5 py-xl-5">
 
@@ -24,9 +24,8 @@
               <h1>Amount Payable</h1><%= @price %><br><br>
               <h1>Payment Mode</h1>
 
-              <%= button_to "Cash On Delivery", payment_index_path(id: @payment.id, mode: "cash_on_delivery", status: "pending"), method: 'post', data: { confirm: 'Place Order?' } %>
-              <%# link_to "Card Payment", payment_path(id: @payment.id,mode: "card_payment",status: "pending"), remote: true %>
-              <%= link_to "Card Payment", cards_path(id: @payment.id,mode: "card_payment",status: "pending")%>
+              <%= button_to "Cash On Delivery", payment_index_path(id: @payment.id, mode: "cash_on_delivery", status: "pending"), method: 'post', class: "btn", data: { confirm: 'Place Order?' } %>
+              <%= link_to "Card Payment", cards_path(id: @payment.id,mode: "card_payment",status: "pending"), class: "btn"%>
             </div>
           </div>
         </div>
