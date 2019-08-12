@@ -1,7 +1,4 @@
 class PaymentController < ApplicationController
-  # def create
-  #   @payment = Payment.new
-  # end
 
   def new
     @order_id = parameter_order_id
@@ -12,29 +9,25 @@ class PaymentController < ApplicationController
   end
 
   def create
-
     @payment = Payment.find_by(id: parameter[:id])
     @payment.update(mode: parameter[:mode],status: parameter[:status])
-    @payment.save
+    if @payment.save
+      EmailMailer.buyer(@payment.id).deliver_now
+      EmailMailer.seller(@payment.id).deliver_now
+    end
     redirect_to dashboard_index_path
-
   end
 
   def update
     @payment = Payment.find_by(id: parameter[:payment_id])
     @payment.update(table_card_detail_id: parameter[:id],status: "amount Paid")
+    if @payment.save
+      EmailMailer.buyer(@payment.id).deliver_now
+      EmailMailer.seller(@payment.id).deliver_now
+    end
     redirect_to dashboard_index_path
   end
 
-  # def show
-  # # @order_id = parameter[:id]
-  # # debugger
-  #   @payment_id = parameter[:id]
-  #   @payment = Payment.find_by(id: @payment_id)
-  #   @payment.update(mode: parameter[:mode],status: parameter[:status])
-  #
-  #   @cards = TableCardDetail.where(user_id: session[:current_user_id])
-  # end
 
   private
 

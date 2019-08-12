@@ -1,2 +1,0 @@
-class LoginMailer < ApplicationMailer
-end

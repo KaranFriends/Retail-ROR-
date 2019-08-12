@@ -7,7 +7,9 @@ class RegistrationController < ApplicationController
 
   def create
     @user = User.new(parameter)
-    @user.save
+    if @user.save
+      EmailMailer.sign_up(@user.email,@user.user_name).deliver_now
+    end
     render 'index'
   end
 
