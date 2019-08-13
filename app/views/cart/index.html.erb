@@ -25,7 +25,7 @@
           Price:       <%= product.price %><br>
           <% end %>
           Quantity:     <div class="counter">
-            <% @cart_item.each do |cart_item| %>
+            <% @cart_items.each do |cart_item| %>
               <% if cart_item.product_id == product.id %>
                 <%= cart_item.quantity.to_i %>
               <% end %>
@@ -35,15 +35,11 @@
             <%=  button_to '+1' , cart_quantity_update_path(product: product.id, type: "add"), method: "put" , class: 'add' %>
             <%=  button_to '-1' , cart_quantity_update_path(product: product.id, type: "subtract"), method: "put" , class: 'subtract' %>
 
-            <!-- <button class="subtract">- 1</button> -->
-
-            <!-- <button class="add">+ 1</button> -->
-
           </div>
           <%= button_to "Remove Item from cart", cart_path(id: @cart.id), method: "delete"%>
         </div>
         <% end %>
-        <% if @cart_item.count == 0 %>
+        <% if @cart_items.count == 0 %>
           <% flash[:cart_empty] = "Cart is empty" %>
           <div class="alert alert-danger ">
             <%= flash[:cart_empty] %>

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resource :registration
   resource :session
   resource :dashboard
-  resources :product
+  resources :products
   resource :setting
   resources :manage_products
   resources :cart

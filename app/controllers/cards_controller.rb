@@ -11,13 +11,13 @@ class CardsController < ApplicationController
   end
 
   def create
-    TableCardDetail.create(parameter_create).save
+    TableCardDetail.create(card_parameter)
     redirect_to cards_path(id: params[:id],mode: "card_payment",status: "pending")
   end
 
   private
 
-  def parameter_create
+  def card_parameter
     params.require(:card).permit(:id,:card,:card_number,:expiry,:cvv,:card_holder_name,:user_id)
   end
 

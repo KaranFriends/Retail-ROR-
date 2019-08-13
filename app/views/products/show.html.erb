@@ -1,0 +1,46 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<%# render "layouts/home_logout" %>
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="col-xl-2" style="background-color:#ffffff">
+
+      <%= render partial: "layouts/side_navbar", locals: {selected: "product"} %>
+    </div>
+
+    <div class="col-xl-9" style="width: 1000px; background-color:#4B515D">
+
+      <div class="px-xl-5 py-xl-5">
+        <%# <%= form_for :product, url: cart_path(id: @cart.id, product_id: @product.id, status: "new", quantity: "1"), method: "put", html: {class: "form-horizontal center text-light"}, remote: true do |f| %>
+
+        <div class="row">
+
+          <div class="col-xl-6">
+
+            <div class="row pl-xl-3 has_picture">
+              <%= render partial: "picture", locals: {product_pic: @product,size: 400}%><br>
+            </div>
+          </div>
+          <div class="col-xl-6">
+            Name: <%= @product.name %> <br><br>
+            Description: <%= @product.description %> <br><br>
+            Price: <%= @product.price %> <br><br>
+            Brand: <%= @product.brand %> <br><br>
+            Date First Available: <%= @product.date_first_available %> <br><br>
+
+            <div class="row pt-xl-5 pl-xl-3">
+
+              <%= button_to "Add To Cart", cart_path(id: @cart.id, product_id: @product.id, status: "new", quantity: "1"), method: "put",  class: "btn btn-default btn-primary", data: { confirm: 'Are you sure ?' }, remote: true %>
+            </div>
+          </div>
+
+        </div>
+        <%# <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>

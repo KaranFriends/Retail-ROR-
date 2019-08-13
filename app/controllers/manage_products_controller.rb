@@ -9,8 +9,13 @@ class ManageProductsController < ApplicationController
   end
 
   def create
-    Product.new(parameter_for).save
-    redirect_to manage_products_path
+    @product = Product.new(parameter_for)
+    unless @product.save
+      render :new
+    else
+      flash[:success] = "Successfully Added"
+      redirect_to manage_products_path
+    end
   end
 
   def edit
@@ -19,7 +24,12 @@ class ManageProductsController < ApplicationController
 
   def update
     @product = Product.find_by(id: params[:id])
-    @product.update(parameter_for)
+    unless @product.update(parameter_for)
+      render :edit
+    else
+      flash[:success] = "Successfully Edited"
+      redirect_to manage_products_path
+    end
   end
 
   def destroy

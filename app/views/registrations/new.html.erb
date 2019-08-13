@@ -1,16 +1,12 @@
 <body style="background-color:#4B515D">
 
   <%# <%= render "navbar" %>
-  <% if @user.errors[:user_name].any? %>
-    <div class="alert alert-danger" role="alert">
-        User Name<%= @user.errors[:user_name].to_s %>
-    </div>
-  <%end%>
 
   <div align="center" class="container " style="width: 1000px; background-color:#3E4551">
 
     <div class="px-xl-5 py-xl-5">
-      <%= form_for @user, url: { action: "create" }, :html => {:class => "form-horizontal center text-light"} do |f| %>
+
+      <%= form_for :user, url: { action: "create" }, :html => {:class => "form-horizontal center text-light"} do |f| %>
       <div class="row">
 
         <div class="col-xl-6">
@@ -28,6 +24,17 @@
             <%= f.label :email, "Email:", class: " control-label" %>
           </div>
           <%= f.text_field :email, class: "form-control" %>
+
+          <% if @user.errors[:email].any?%>
+          <div class="row pl-xl-3 text-left">
+            <div class="text-danger">
+              <% @user.errors[:email].each do |error| %>
+                **<%= error %> <br>
+              <% end %>
+            </div>
+          </div>
+          <% end %>
+
         </div>
 
         <div class="col-xl-6">
@@ -37,6 +44,15 @@
           </div>
 
           <%= f.text_field :password, class: "form-control" %>
+          <% if @user.errors[:password].any?%>
+          <div class="row pl-xl-3 text-left">
+            <div class="text-danger">
+              <% @user.errors[:password].each do |error| %>
+                **<%= error %> <br>
+              <% end %>
+            </div>
+          </div>
+          <% end %>
         </div>
       </div>
 
@@ -48,6 +64,15 @@
             <%= f.label :user_name, "User Name:", class: " control-label" %>
           </div>
           <%= f.text_field :user_name, class: "form-control" %>
+          <% if @user.errors[:user_name].any?%>
+          <div class="row pl-xl-3 text-left">
+            <div class="text-danger">
+              <% @user.errors[:user_name].each do |error| %>
+                **<%= error %> <br>
+              <% end %>
+            </div>
+          </div>
+          <% end %>
         </div>
 
         <div class="col-xl-6">
@@ -57,6 +82,15 @@
           </div>
 
           <%= f.text_field :phone_number, class: "form-control" %>
+          <% if @user.errors[:phone_number].any?%>
+          <div class="row pl-xl-3 text-left">
+            <div class="text-danger">
+              <% @user.errors[:phone_number].each do |error| %>
+                **<%= error %> <br>
+              <% end %>
+            </div>
+          </div>
+          <% end %>
         </div>
 
       </div>
@@ -69,6 +103,15 @@
 
         <div class="col-xl-6">
           <%= f.text_field :alternate_number, class: "form-control" %>
+          <% if @user.errors[:alternate_number].any?%>
+          <div class="row pl-xl-3 text-left">
+            <div class="text-danger">
+              <% @user.errors[:alternate_number].each do |error| %>
+                **<%= error %> <br>
+              <% end %>
+            </div>
+          </div>
+          <% end %>
         </div>
       </div>
 

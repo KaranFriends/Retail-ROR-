@@ -3,10 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body {
-  font-family: "Lato", sans-serif;
+  // font-family: "Lato", sans-serif;
 }
 
 .sidenav {
+  margin-top: 120px;
   height: 100%;
   width: 160px;
   position: fixed;
@@ -16,6 +17,7 @@ body {
   background-color: white;
   overflow-x: hidden;
   padding-top: 20px;
+
 }
 
 .sidenav a {
@@ -37,7 +39,7 @@ body {
 }
 
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
+  .sidenav {padding-top: 30px;}
   .sidenav a {font-size: 18px;}
 }
 

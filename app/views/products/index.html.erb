@@ -19,7 +19,7 @@
         <div class="col-sm-3 py-md-3 mx-md-3 border border-dark" style="background-color:#ffffff" align="center">
           <%= link_to product_path(id: @cart.id, product_id: product.id, status: "new", quantity: "1") do  %>
             <br>
-            <%= render partial: "picture", locals: {product_pic: product}%><br>
+            <%= render partial: "picture", locals: {product_pic: product,size: 200}%><br>
             Name:        <%= product.name %> <br>
             Description: <%= product.description %><br>
             Price:       <%= product.price %><br>

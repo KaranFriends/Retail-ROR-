@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_08_145723) do
+ActiveRecord::Schema.define(version: 2019_08_13_152552) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2019_08_08_145723) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "name"
-    t.string "contact_number"
+    t.integer "contact_number"
     t.string "address"
     t.string "landmark"
     t.integer "user_id"
@@ -112,10 +112,10 @@ ActiveRecord::Schema.define(version: 2019_08_08_145723) do
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "price"
+    t.integer "price"
     t.integer "user_id"
     t.string "brand"
-    t.string "date_first_available"
+    t.date "date_first_available"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_products_on_user_id"
@@ -138,8 +138,8 @@ ActiveRecord::Schema.define(version: 2019_08_08_145723) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email"
-    t.string "phone_number"
-    t.string "alternate_number"
+    t.integer "phone_number"
+    t.integer "alternate_number"
   end
 
 end

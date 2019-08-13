@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  
   def new
     @addresses = Address.where(user_id: session[:current_user_id])
   end
@@ -9,9 +10,9 @@ class OrdersController < ApplicationController
     # @order.save
     @cart = Cart.find_by(user_id: session[:current_user_id])
 
-    @cart_item = CartItem.where(cart_id: @cart.id,status: "new")
+    @cart_items = CartItem.where(cart_id: @cart.id,status: "new")
     @price = 0
-    @cart_item.each do |cart_item|
+    @cart_items.each do |cart_item|
       product = Product.find_by(id: cart_item.product_id)
       @OrderItem = OrderItem.create(order_id: @order.id, product_id: product.id, name: product.name,description: product.description, price:  product.price.to_i * cart_item.quantity.to_i , brand: product.brand, date_first_available: product.date_first_available,quantity: cart_item.quantity)
       cart_item.update(status: "old")

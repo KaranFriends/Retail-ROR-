@@ -35,6 +35,17 @@
             <%= f.label "Name:", class: " control-label" %>
           </div>
           <%= f.text_field :name, class: "form-control" %>
+
+          <% if @product.errors[:name].any?%>
+          <div class="row pl-xl-3 text-left">
+            <div class="text-danger">
+              <% @product.errors[:name].each do |error| %>
+                **<%= error %> <br>
+              <% end %>
+            </div>
+          </div>
+          <% end %>
+
         </div>
 
         <div class="col-xl-6">
@@ -43,6 +54,17 @@
             <%= f.label "Description:", class: " control-label" %>
           </div>
           <%= f.text_area :description, class: "form-control" %>
+
+          <% if @product.errors[:description].any?%>
+          <div class="row pl-xl-3 text-left">
+            <div class="text-danger">
+              <% @product.errors[:description].each do |error| %>
+                **<%= error %> <br>
+              <% end %>
+            </div>
+          </div>
+          <% end %>
+
         </div>
       </div>
 
@@ -54,6 +76,18 @@
             <%= f.label "Price:", class: " control-label" %>
           </div>
           <%= f.text_field :price, class: "form-control" %>
+
+
+            <% if @product.errors[:price].any?%>
+            <div class="row pl-xl-3 text-left">
+              <div class="text-danger">
+                <% @product.errors[:price].each do |error| %>
+                  **<%= error %> <br>
+                <% end %>
+              </div>
+            </div>
+            <% end %>
+
         </div>
 
         <div class="col-xl-6">
@@ -62,6 +96,17 @@
             <%= f.label "Brand:", class: " control-label" %>
           </div>
           <%= f.text_field :brand, class: "form-control" %>
+
+          <% if @product.errors[:brand].any?%>
+          <div class="row pl-xl-3 text-left">
+            <div class="text-danger">
+              <% @product.errors[:brand].each do |error| %>
+                **<%= error %> <br>
+              <% end %>
+            </div>
+          </div>
+          <% end %>
+
         </div>
 
       </div>
@@ -73,7 +118,18 @@
       <div class="row">
 
         <div class="col-xl-6">
-          <%= f.text_field :date_first_available, class: "form-control" %>
+          <%= f.date_field :date_first_available, class: "form-control" %>
+
+          <% if @product.errors[:date_first_available].any?%>
+          <div class="row pl-xl-3 text-left">
+            <div class="text-danger">
+              <% @product.errors[:date_first_available].each do |error| %>
+                **<%= error %> <br>
+              <% end %>
+            </div>
+          </div>
+          <% end %>
+
         </div>
       </div>
 

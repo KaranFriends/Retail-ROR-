@@ -19,9 +19,9 @@ class PaymentsController < ApplicationController
       @order_id = Payment.find_by(id: @payment).order_id
       @user_id = Order.find_by(id: @order_id).user_id
 
-      @order_item = OrderItem.where(order_id: @order_id)
+      @order_items = OrderItem.where(order_id: @order_id)
 
-      @order_item.each do |item|
+      @order_items.each do |item|
         @product = Product.find_by(id: item.product_id)
         seller = User.find_by(id: @product.user_id)
         email = seller.email

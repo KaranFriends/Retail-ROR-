@@ -1,7 +1,7 @@
 <%#  @user.picture  %>
 <% image_present = @user.picture.blob.present? rescue nil %>
 <% if( image_present ) %>
-  <%= image_tag(@user.picture, size: "100") %>
+  <%= image_tag(@user.picture, size: "200") %>
 <% else %>
-  <%=  image_tag(:default, size: "100") %>
+  <%=  image_tag(:default, size: "200") %>
 <% end %>
