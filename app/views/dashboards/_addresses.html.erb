@@ -1,0 +1,49 @@
+<table class="table table-hover table-light">
+  <!-- <thead> -->
+  <tbody>
+      <% addresses.each do |address| %>
+      <tr>
+        <td>
+          <div class="row">
+            <div class="col-xl-4">
+              Name :<%= address.name%>
+            </div>
+            <div class="col-xl-6">
+              Contact Number :  <%= address.contact_number%>
+            </div>
+            <div class="col-xl-1">
+              <%= link_to "delete", address_path(id: address.id), method: "delete",class: "btn"%>
+            </div>
+            <div class="col-xl-1">
+              <%= link_to "edit", dashboards_edit_address_path(id: address.id) , class: "btn" , remote: true %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-4">
+              Address : <%= address.address%>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-4">
+              Landmark:<%= address.landmark%>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <% end %>
+    <tr>
+      <td>
+        <%= link_to "add new address",dashboards_new_address_path, remote: true %>
+      </td>
+    </tr>
+  </tbody>
+  <!-- </thead> -->
+  <!-- <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    </tbody> -->
+</table>

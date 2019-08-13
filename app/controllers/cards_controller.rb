@@ -1,12 +1,12 @@
 class CardsController < ApplicationController
   def new
-    @payment = parameter[:payment_id]
+    @payment = params[:payment_id]
   end
 
   def index
-    @payment_id = parameter_index[:id]
+    @payment_id = params[:id]
     @payment = Payment.find_by(id: @payment_id)
-    @payment.update(mode: parameter_index[:mode],status: parameter_index[:status])
+    @payment.update(mode: params[:mode],status: params[:status])
     @cards = TableCardDetail.where(user_id: session[:current_user_id])
   end
 
@@ -17,16 +17,8 @@ class CardsController < ApplicationController
 
   private
 
-  def parameter
-    params.permit(:payment_id)
-  end
-
   def parameter_create
     params.require(:card).permit(:id,:card,:card_number,:expiry,:cvv,:card_holder_name,:user_id)
-  end
-
-  def parameter_index
-    params.permit(:id,:mode,:status)
   end
 
 end

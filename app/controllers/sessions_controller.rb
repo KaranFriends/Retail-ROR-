@@ -1,4 +1,4 @@
-class SessionController < ApplicationController
+class SessionsController < ApplicationController
   skip_before_action :require_login, only: [:new,:create]
 
   def new
@@ -11,7 +11,7 @@ class SessionController < ApplicationController
       session[:current_user_id] = @user.id
       current_user
       flash[:success] = "You have logged in"
-      redirect_to controller: 'dashboard', action: 'index'
+      redirect_to controller: 'dashboards', action: 'show'
     else
       redirect_to new_session_path
       flash[:danger] = "Invalid login credentials"

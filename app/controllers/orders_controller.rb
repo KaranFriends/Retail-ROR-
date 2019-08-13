@@ -1,4 +1,4 @@
-class OrderController < ApplicationController
+class OrdersController < ApplicationController
   def new
     @addresses = Address.where(user_id: session[:current_user_id])
   end

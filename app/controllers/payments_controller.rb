@@ -1,4 +1,4 @@
-class PaymentController < ApplicationController
+class PaymentsController < ApplicationController
 
   def new
     @order_id = params[:order_id]
@@ -10,6 +10,9 @@ class PaymentController < ApplicationController
   def create
     @payment = Payment.find_by(id: params[:id])
     @payment.update(mode: params[:mode],status: params[:status])
+    @order = Order.find(@payment.order_id)
+    @order.status = params[:status]
+    @order.save
 
     if @payment.save
 
@@ -27,18 +30,22 @@ class PaymentController < ApplicationController
       EmailMailer.buyer(@payment.id).deliver_now
 
     end
-
-    redirect_to dashboard_index_path
+    flash[:success] = "order placed successfully"
+    redirect_to dashboard_path
   end
 
   def update
     @payment = Payment.find_by(id: params[:payment_id])
-    @payment.update(table_card_detail_id: params[:id],status: "amount Paid")
+    @payment.update(table_card_detail_id: params[:id],status: "amount paid")
+    @order = Order.find(@payment.order_id)
+    @order.status = "amount paid"
+    @order.save
     if @payment.save
       EmailMailer.buyer(@payment.id).deliver_now
       EmailMailer.seller(@payment.id).deliver_now
     end
-    redirect_to dashboard_index_path
+    flash[:success] = "order placed successfully"
+    redirect_to dashboard_path
   end
 
 end

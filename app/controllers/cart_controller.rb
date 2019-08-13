@@ -11,9 +11,9 @@ class CartController < ApplicationController
 
   def index
     @cart = Cart.find_by(user_id: session[:current_user_id])
-    @cart_item = CartItem.where(cart_id: @cart.id,status: "new")
+    @cart_items = CartItem.where(cart_id: @cart.id,status: "new")
     @products= Array.new
-    @cart_item.each do |product|
+    @cart_items.each do |product|
       @products.push(Product.find_by(id: product.product_id))
     end
   end

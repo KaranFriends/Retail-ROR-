@@ -1,0 +1,51 @@
+<table class="table table-hover table-light">
+  <!-- <thead> -->
+  <tbody>
+    <% orders.each do |order| %>
+    <tr>
+      <td>
+        <div class="row">
+          <h3> Order Id : <%= order.id %></h3>
+          </div>
+          <table class="table table-hover table-light">
+            <tbody>
+              <% OrderItem.where(order_id: order.id).each do |order_item| %>
+              <!-- <thead> -->
+              <tr>
+                <td>
+
+                  Name : <%= order_item.name %>
+                  Description : <%= order_item.description %>
+                  Price : <%= order_item.price %>
+                  Brand : <%= order_item.brand %>
+                  Date Fist Available : <%= order_item.date_first_available %>
+                  Quantity : <%= order_item.quantity %>
+
+                  <% end %>
+
+                </tr>
+              </td>
+            </tbody>
+          </table>
+          <div class="row">
+            <div class="col-xl-6">
+              <h6>Status: <%= order.status%></h6>
+            </div>
+            <div class="col-xl-6">
+              <h6>Price: <%= order.price%></h6>
+            </div>
+          </div>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+      <!-- </thead> -->
+      <!-- <tbody>
+      <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+  </table>
+  </tbody> -->

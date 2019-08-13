@@ -1,0 +1,54 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<%# render "layouts/home_logout" %>
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="col-xl-2" style="background-color:#ffffff">
+
+      <%= render partial: "layouts/side_navbar", locals: {selected: "dashboard"} %>
+    </div>
+
+    <div class="col-xl-9" style="width: 1000px; background-color:#4B515D">
+
+      <ul class="nav justify-content-end bg-light">
+
+        <li class="nav-item">
+          <div class="nav-link active" >
+            <%= link_to 'Profile', dashboards_profile_path, class: 'btn btn-default', remote: true %>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link active" >
+            <%= link_to 'Orders Placed', dashboards_order_placed_path, class: 'btn btn-default', remote: true %>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link active" >
+            <%= link_to 'Addresses', dashboards_addresses_path, class: 'btn btn-default', remote: true %>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link active" >
+            <%= link_to 'Cards', dashboards_cards_path, class: 'btn btn-default', remote: true %>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link active" >
+            <%= link_to 'Orders Recieved', dashboards_order_recieved_path, class: 'btn btn-default', remote: true %>
+          </div>
+        </li>
+      </ul>
+      <div class="dashboards">
+        <% if @selected == "address"%>
+            <%= render partial: "addresses", locals: {addresses: @addresses} %>
+        <% elsif %>
+          <%= render partial: "profile", locals: {user: @user} %>
+          <%end%>
+      </div>
+    </div>
+  </div>
+
+</div>

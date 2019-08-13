@@ -16,23 +16,23 @@
 <div class="sidenav vertically-center alert" style="background-color:#4B515D; width: 180px; height: 500px">
   <br><br>
 
-  <li class="row py-xl-2 px-xl-2" style= <%= dashboard %>>
+  <li class="row py-xl-2 px-xl-2 rounded" style= <%= dashboard %>>
     <%=  link_to 'Dashboard' , dashboard_path, class: "btn" %>
   </li>
 
-  <li class="row py-xl-2 px-xl-2" style= <%= products %>>
+  <li class="row py-xl-2 px-xl-2 rounded" style= <%= products %>>
     <%=  link_to 'Products' , product_index_path, class: "btn" %>
   </li>
 
-  <li class="row py-xl-2 px-xl-2" style= <%= settings %>>
-    <%=  link_to 'Settings' , setting_index_path , class: "btn" %>
+  <li class="row py-xl-2 px-xl-2 rounded" style= <%= settings %>>
+    <%=  link_to 'Settings' , edit_setting_path , class: "btn" %>
   </li>
 
-  <li class="row py-xl-2 px-xl-2" style= <%= manage_products %> >
+  <li class="row py-xl-2 px-xl-2 rounded" style= <%= manage_products %> >
     <%=  link_to 'EditProducts' , manage_products_path , class: "btn" %>
   </li>
 
-  <li class="row py-xl-2 px-xl-2" style= <%= cart %> >
+  <li class="row py-xl-2 px-xl-2 rounded" style= <%= cart %> >
     <%=  link_to 'Cart' , cart_index_path , class: "btn" %>
   </li>
 </div>

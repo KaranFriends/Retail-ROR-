@@ -1,0 +1,48 @@
+<br><br><br>
+<br><br><br>
+<%= form_for :address, url: addresses_path(type: "dashboard"), method: "post", html: {class: "form-horizontal center text-light"} do |f| %>
+
+<div class="row">
+
+  <div class="col-xl-6">
+
+    <div class="row pl-xl-3">
+      <%= f.label "Name:",class: " control-label" %>
+    </div>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="col-xl-6">
+
+    <div class="row pl-xl-3">
+      <%= f.label "Contact Number:", class: " control-label" %>
+    </div>
+    <%= f.text_field :contact_number,class: "form-control" %>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-xl-6">
+
+    <div class="row pl-xl-3 py-xl-2">
+      <%= f.label "Address:", class: " control-label" %>
+    </div>
+    <%= f.text_field :address, class: "form-control" %>
+  </div>
+
+  <div class="col-xl-6">
+
+    <div class="row pl-xl-3 py-xl-2">
+      <%= f.label "Landmark:", class: " control-label" %>
+    </div>
+    <%= f.text_area :landmark, class: "form-control" %>
+  </div>
+
+</div>
+
+
+<div class="row pt-xl-5 pl-xl-3">
+  <%= f.submit "Add Address", class: "btn btn-default btn-primary" %>
+</div>
+<% end %>

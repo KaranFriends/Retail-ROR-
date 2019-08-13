@@ -22,7 +22,6 @@
           Expiry Date:     <%= card.expiry %><br>
           card_holder_name:<%= card.card_holder_name %> <br>
 
-          <%# <%= button_to "Cash On Devlivery", payment_index_path(id: @order_id,payment_id: @payment.id, mode: "cash_on_delivery", status: "pending"), method: 'post', data: { confirm: 'Place Order?' } %> %>
           <%= button_to "Place Order with this card",payment_path(id: card.id,payment_id: @payment_id) , method: "put",data: { confirm: 'Place order ?' } %>
         </div>
         <% end %>

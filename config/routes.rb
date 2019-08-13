@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   put 'cart/quantity_update'
   #get 'users/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'registration#index'
+  root 'registrations#index'
 
   resource :registration
   resource :session
@@ -13,12 +13,18 @@ Rails.application.routes.draw do
   resources :product
   resource :setting
   resources :manage_products
-  resource :cart
+  resources :cart
   resource :order
   resource :payment
   resources :cards
   resources :addresses
 
-  post 'dashboard/address'
+  get 'dashboards/profile'
+  get 'dashboards/addresses'
+  get 'dashboards/new_address'
+  get 'dashboards/edit_address'
+  get 'dashboards/cards'
+  get 'dashboards/order_placed'
+  get 'dashboards/order_recieved'
 
 end

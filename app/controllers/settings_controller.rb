@@ -1,12 +1,7 @@
-class SettingController < ApplicationController
-  def index
+class SettingsController < ApplicationController
+  def edit
     @user = User.find_by(id: session[:current_user_id])
   end
-
-  def new
-    render plain:"nsadfoiaejdoiq"
-  end
-
   def update
     # render plain: params
     @user = User.find(session[:current_user_id])
