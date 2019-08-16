@@ -1,7 +1,7 @@
 class SettingsController < ApplicationController
-  
+
   def edit
-    @user = User.find_by(id: session[:current_user_id])
+    @user = User.find(@current_user)
   end
 
   def show
@@ -9,13 +9,8 @@ class SettingsController < ApplicationController
   end
 
   def update
-    # debugger
-    # render plain: params
-    @user = User.find(session[:current_user_id])
-    @user.update(parameter)
-    unless @user.save
-      # debugger
-      # flash[:destroy] = "Error"
+    @user = User.find(@current_user)
+    unless @user.update_attributes(user_parameter)
       render :edit
     else
       flash[:success] = "successfully edited"
@@ -24,12 +19,12 @@ class SettingsController < ApplicationController
   end
 
   def destroy
-    @delete = User.find(session[:current_user_id])
+    @delete = User.find(@current_user)
     @delete.picture.purge
   end
 
   private
-  def parameter
+  def user_parameter
     params.require(:user).permit(:email,:password,:user_name,:phone_number,:alternate_number,:picture)
   end
 end

@@ -1,7 +1,7 @@
 class AddressesController < ApplicationController
 
   def create
-    address = Address.new(parameter.merge({user_id: session[:current_user_id]}))
+    address = Address.new(parameter.merge({user_id: @current_user}))
     if address.save
       if params[:type] == "order"
         redirect_to new_order_path
@@ -10,15 +10,19 @@ class AddressesController < ApplicationController
         redirect_to dashboard_path(selected: "address")
       end
     else
-      flash[:destroy] = "Address not added"
+      flash[:danger] = "Address not added"
       redirect_to dashboard_path(selected: "address")
     end
   end
 
   def destroy
-    @address = address_finder
-    @address.destroy
-    redirect_to dashboard_path(selected: "address")
+    address = address_finder
+    if address.destroy
+      flash[:success] = "Address deleted successfully"
+      redirect_to dashboard_path(selected: "address")
+    else
+      flash[:danger] = "deletion failed "
+    end
   end
 
   def update

@@ -5,12 +5,6 @@ class User < ApplicationRecord
   validates :phone_number, presence: true,length: { is: 10 }, numericality: { only_integer: true , greater_than: 0}
   validates :alternate_number, presence: true,length: { is: 10 }, numericality: { only_integer: true , greater_than: 0}
 
-  has_one :cart
-  has_many :order
-  has_many :product
-  has_many :feedback
-  has_one_attached :picture
-  has_many :table_card_detail
 
   def self.authenticate(params)
     if @user = User.where(user_name: params[:user_name]).first
@@ -19,5 +13,13 @@ class User < ApplicationRecord
       end
     end
   end
+
+  has_one :cart, :dependent => :nullify
+  has_many :order, :dependent => :nullify
+  has_many :product, :dependent => :nullify
+  has_many :address, :dependent => :nullify
+  has_many :feedback, :dependent => :nullify
+  has_many :card, :dependent => :nullify
+  has_one_attached :picture
 
 end

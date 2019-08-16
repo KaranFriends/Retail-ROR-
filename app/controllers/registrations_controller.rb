@@ -10,23 +10,17 @@ class RegistrationsController < ApplicationController
   end
 
   def create
-    @user = User.new(parameter)
+    @user = User.new(user_parameter)
     if @user.save
       EmailMailer.sign_up(@user.email,@user.user_name).deliver_now
       redirect_to root_path
     else
-      # @user.errors.messages.each do |key, value|
-      #   @errors.merge!(key => value)
-      # end
-
-      # render plain: @errors
-      # flash[:danger] = "there are some error"
       render :new
     end
   end
 
   private
-  def parameter
+  def user_parameter
     params.require(:user).permit(:user_name,:password,:email,:password,:phone_number,:alternate_number,:picture)
   end
 end

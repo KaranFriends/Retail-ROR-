@@ -1,5 +1,4 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <div class="container-fluid">
 
   <div class="row">
@@ -12,7 +11,7 @@
     <div class="col-xl-9" style="width: 1000px; background-color:#4B515D">
 
       <div class="px-xl-5 py-xl-5">
-        <%= form_for :card, url: cards_path(id: @payment), method: "post", html: {class: "form-horizontal center text-light"} do |f| %>
+        <%= form_for :card, url: cards_path(id: @payment_id,type: "order"), method: "post", html: {class: "form-horizontal center text-light"} do |f| %>
 
         <div class="row">
 
@@ -22,6 +21,17 @@
               <%= f.label "Card Number:",class: " control-label" %>
             </div>
             <%= f.text_field :card_number, class: "form-control" %>
+
+            <% if @card.errors[:card_number].any?%>
+            <div class="row pl-xl-3 text-left">
+              <div class="text-danger">
+                <% @card.errors[:card_number].each do |error| %>
+                  **<%= error %> <br>
+                <% end %>
+              </div>
+            </div>
+            <% end %>
+
           </div>
 
           <div class="col-xl-6">
@@ -29,8 +39,19 @@
             <div class="row pl-xl-3">
               <%= f.label "Expiry:", class: " control-label" %>
             </div>
-            <%= f.text_field :expiry,class: "form-control" %>
+            <%= f.date_field :expiry,class: "form-control" %>
             <%= f.hidden_field :user_id,value: current_user.id,class: "form-control" %>
+
+            <% if @card.errors[:expiry].any?%>
+            <div class="row pl-xl-3 text-left">
+              <div class="text-danger">
+                <% @card.errors[:expiry].each do |error| %>
+                  **<%= error %> <br>
+                <% end %>
+              </div>
+            </div>
+            <% end %>
+
           </div>
         </div>
 
@@ -42,6 +63,17 @@
               <%= f.label "CVV:", class: " control-label" %>
             </div>
             <%= f.text_field :cvv, class: "form-control" %>
+
+            <% if @card.errors[:cvv].any?%>
+            <div class="row pl-xl-3 text-left">
+              <div class="text-danger">
+                <% @card.errors[:cvv].each do |error| %>
+                  **<%= error %> <br>
+                <% end %>
+              </div>
+            </div>
+            <% end %>
+
           </div>
 
           <div class="col-xl-6">
@@ -49,7 +81,18 @@
             <div class="row pl-xl-3 py-xl-2">
               <%= f.label "Card Holer Name:", class: " control-label" %>
             </div>
-            <%= f.text_area :card_holder_name, class: "form-control" %>
+            <%= f.text_field :card_holder_name, class: "form-control" %>
+
+            <% if @card.errors[:card_holder_name].any?%>
+            <div class="row pl-xl-3 text-left">
+              <div class="text-danger">
+                <% @card.errors[:card_holder_name].each do |error| %>
+                  **<%= error %> <br>
+                <% end %>
+              </div>
+            </div>
+            <% end %>
+
           </div>
 
         </div>

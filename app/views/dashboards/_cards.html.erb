@@ -1,55 +1,49 @@
-<div class="px-xl-5 py-xl-5">
-  <%= form_for :user do |f| %>
-
-  <div class="row">
-
-    <div class="col-xl-6">
-
-      <div class="row pl-xl-3">
-        <%= f.label "Email:",class: " control-label" %>
-      </div>
-        <%= f.label :email,value: user.email, class: "form-control" %>
-    </div>
-
-    <div class="col-xl-6">
-
-      <div class="row pl-xl-3">
-        <%= f.label "Password:", class: " control-label" %>
-      </div>
-        <%= f.label :password, value: user.password,class: "form-control" %>
-    </div>
-  </div>
-
-  <div class="row">
-
-    <div class="col-xl-6">
-
-      <div class="row pl-xl-3 py-xl-2">
-        <%= f.label :user_name, "User Name:", class: " control-label" %>
-      </div>
-        <%= f.label :user_name,value: user.user_name, class: "form-control" %>
-    </div>
-
-    <div class="col-xl-6">
-
-      <div class="row pl-xl-3 py-xl-2">
-        <%= f.label "Phone Number:", class: " control-label" %>
-      </div>
-        <%= f.label :phone_number,value: user.phone_number, class: "form-control" %>
-    </div>
-
-  </div>
-
-  <div class="row pl-xl-3 py-xl-2">
-      <%= f.label  "Alternate Number:", class: " control-label" %>
-  </div>
-
-  <div class="row">
-    <div class="col-xl-6">
-      <%= f.label :alternate_number,value: user.alternate_number, class: "form-control" %>
-    </div>
-  </div>
-
-  <% end %>
-
-</div>
+<table class="table table-hover table-light">
+  <!-- <thead> -->
+  <tbody>
+      <% card.each do |card| %>
+      <tr>
+        <td>
+          <div class="row">
+            <div class="col-xl-4">
+              Card Number :<%= card.card_number%>
+            </div>
+            <div class="col-xl-6">
+              Expiry :  <%= card.expiry%>
+            </div>
+            <div class="col-xl-1">
+              <%= link_to "delete", card_path(id: card.id), method: "delete",class: "btn"%>
+            </div>
+            <div class="col-xl-1">
+              <%= link_to "edit", dashboards_edit_card_path(id: card.id) , class: "btn" , remote: true %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-4">
+              CVV : <%= card.cvv%>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-4">
+              Card Holer Name : <%= card.card_holder_name%>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <% end %>
+    <tr>
+      <td>
+        <%= link_to "add new card",dashboards_new_card_path, remote: true %>
+      </td>
+    </tr>
+  </tbody>
+  <!-- </thead> -->
+  <!-- <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    </tbody> -->
+</table>

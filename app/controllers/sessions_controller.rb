@@ -6,9 +6,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @current_user = session[:current_user_id] = nil
-    if @user = User.authenticate(parameter)
-      session[:current_user_id] = @user.id
+    @current_user = @current_user = nil
+    if @user = User.authenticate(authentication_parameter)
+      @current_user = @user.id
       current_user
       flash[:success] = "You have logged in"
       redirect_to controller: 'dashboards', action: 'show'
@@ -19,16 +19,16 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    @current_user = session[:current_user_id] = nil
+    @current_user = @current_user = nil
     redirect_to root_path
   end
 
   def show
-    render plain:session[:current_user_id]
+    render plain: @current_user
   end
 
   private
-  def parameter
+  def authentication_parameter
     params.require(:user).permit(:user_name, :password)
   end
 

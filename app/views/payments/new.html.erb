@@ -25,7 +25,7 @@
               <h1>Payment Mode</h1>
 
               <%= button_to "Cash On Delivery", payment_path(id: @payment.id, mode: "cash_on_delivery", status: "pending"), method: 'post', class: "btn", data: { confirm: 'Place Order?' } %>
-              <%= link_to "Card Payment", cards_path(id: @payment.id,mode: "card_payment",status: "pending"), class: "btn"%>
+              <%= link_to "Card Payment", cards_path(id: @payment.id, mode: "card_payment", status: "pending"), class: "btn"%>
             </div>
           </div>
         </div>

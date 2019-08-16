@@ -23,7 +23,11 @@ Rails.application.routes.draw do
   get 'dashboards/addresses'
   get 'dashboards/new_address'
   get 'dashboards/edit_address'
+
   get 'dashboards/cards'
+  get 'dashboards/new_card'
+  get 'dashboards/edit_card'
+
   get 'dashboards/order_placed'
   get 'dashboards/order_recieved'
 

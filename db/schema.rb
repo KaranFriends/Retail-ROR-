@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_13_152552) do
+ActiveRecord::Schema.define(version: 2019_08_15_154844) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -42,6 +42,17 @@ ActiveRecord::Schema.define(version: 2019_08_13_152552) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "cards", force: :cascade do |t|
+    t.integer "card_number"
+    t.date "expiry"
+    t.integer "cvv"
+    t.string "card_holder_name"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
   create_table "cart_items", force: :cascade do |t|
@@ -104,9 +115,9 @@ ActiveRecord::Schema.define(version: 2019_08_13_152552) do
     t.integer "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "table_card_detail_id"
+    t.integer "card_id"
+    t.index ["card_id"], name: "index_payments_on_card_id"
     t.index ["order_id"], name: "index_payments_on_order_id"
-    t.index ["table_card_detail_id"], name: "index_payments_on_table_card_detail_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -121,25 +132,14 @@ ActiveRecord::Schema.define(version: 2019_08_13_152552) do
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
-  create_table "table_card_details", force: :cascade do |t|
-    t.integer "card_number"
-    t.string "expiry"
-    t.integer "cvv"
-    t.string "card_holder_name"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_table_card_details_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "user_name"
     t.string "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "email"
     t.integer "phone_number"
     t.integer "alternate_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

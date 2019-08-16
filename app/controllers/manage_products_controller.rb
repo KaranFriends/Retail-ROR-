@@ -1,7 +1,7 @@
 class ManageProductsController < ApplicationController
 
   def index
-    @products = Product.where(user_id: session[:current_user_id])
+    @products = Product.where(user_id: @current_user)
   end
 
   def new
@@ -24,7 +24,7 @@ class ManageProductsController < ApplicationController
 
   def update
     @product = Product.find_by(id: params[:id])
-    unless @product.update(parameter_for)
+    unless @product.update(product_parameter)
       render :edit
     else
       flash[:success] = "Successfully Edited"
@@ -39,7 +39,7 @@ class ManageProductsController < ApplicationController
 
   private
 
-  def parameter_for
+  def product_parameter
     params.require(:product).permit(:name,:description,:price,:brand,:date_first_available,:product_picture,:user_id)
   end
 end

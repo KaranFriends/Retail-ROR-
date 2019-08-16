@@ -1,0 +1,49 @@
+<br><br><br>
+<%= form_for :card, url: card_path(id: card.id), method: "put", html: {class: "form-horizontal center text-light"} do |f| %>
+
+<div class="row">
+
+  <div class="col-xl-6">
+
+    <div class="row pl-xl-3">
+      <%= f.label "Card Number:",class: " control-label" %>
+    </div>
+    <%= f.text_field :card_number, value: card.card_number,class: "form-control" %>
+  </div>
+
+  <div class="col-xl-6">
+
+    <div class="row pl-xl-3">
+      <%= f.label "Expiry:", class: " control-label" %>
+    </div>
+    <%= f.date_field :expiry,value: card.expiry,class: "form-control" %>
+    <%= f.hidden_field :user_id,value: current_user.id,class: "form-control" %>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-xl-6">
+
+    <div class="row pl-xl-3 py-xl-2">
+      <%= f.label "CVV:", class: " control-label" %>
+    </div>
+    <%= f.text_field :cvv, value: card.cvv,class: "form-control" %>
+  </div>
+
+  <div class="col-xl-6">
+
+    <div class="row pl-xl-3 py-xl-2">
+      <%= f.label "Crd Holder Name :", class: " control-label" %>
+    </div>
+    <%= f.text_area :card_holder_name, value: card.card_holder_name, class: "form-control" %>
+  </div>
+
+</div>
+
+
+<div class="row pt-xl-5 pl-xl-3">
+  <%= f.submit "Add Card", class: "btn btn-default btn-primary" %>
+</div>
+<% end %>

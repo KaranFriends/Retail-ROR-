@@ -44,7 +44,9 @@
       <div class="dashboards">
         <% if @selected == "address"%>
             <%= render partial: "addresses", locals: {addresses: @addresses} %>
-        <% elsif %>
+        <% elsif @selected == "card"%>
+              <%= render partial: "cards", locals: {card: @cards} %>
+        <% else %>
           <%= render partial: "profile", locals: {user: @user} %>
           <%end%>
       </div>

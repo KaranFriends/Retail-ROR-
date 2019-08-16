@@ -10,22 +10,11 @@ class EmailMailer < ApplicationMailer
     mail(to: email, subject: "sign up confirm")
   end
 
-  def seller(user_id,product,address,email)
+  def seller(user_id,product_id,address,email)
     @user_id = user_id
-    @product = product
+    @product = product_id
     @address = address
-    # @order_id = Payment.find_by(id: payment_id).order_id
-    # @user_id = Order.find_by(id: @order_id).user_id
-    #
-    # @order_item = OrderItem.where(order_id: @order_id)
-    #
-    # @order_item.each do |item|
-    #   @product = Product.find_by(id: item.product_id)
-    #   seller = User.find_by(id: @product.user_id)
-    #   email = seller.email
-    #   mail(to: email, subject: "Order Recieved")
-    # end
-     mail(to: email, subject: "Order Recieved")
+    mail(to: email, subject: "Order Recieved")
   end
 
   def buyer(payment_id)

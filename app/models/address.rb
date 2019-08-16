@@ -5,5 +5,5 @@ class Address < ApplicationRecord
   validates :landmark, presence: true
 
   belongs_to :user
-  has_many :order
+  has_many :order, :dependent => :nullify
 end
