@@ -135,11 +135,11 @@ ActiveRecord::Schema.define(version: 2019_08_15_154844) do
   create_table "users", force: :cascade do |t|
     t.string "user_name"
     t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "email"
     t.integer "phone_number"
     t.integer "alternate_number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end

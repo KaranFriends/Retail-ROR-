@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
   belongs_to :user
-  has_one :payment
-  has_many :order_item
-  belongs_to :address, optional: true
+  has_one :payment, :dependent => :destroy
+  has_many :order_item, :dependent => :destroy
+  belongs_to :address
 end

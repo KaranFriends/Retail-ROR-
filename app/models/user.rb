@@ -14,12 +14,12 @@ class User < ApplicationRecord
     end
   end
 
-  has_one :cart, :dependent => :nullify
-  has_many :order, :dependent => :nullify
-  has_many :product, :dependent => :nullify
-  has_many :address, :dependent => :nullify
-  has_many :feedback, :dependent => :nullify
-  has_many :card, :dependent => :nullify
+  has_one :cart, :dependent => :destroy
+  has_many :order, :dependent => :destroy
+  has_many :product, :dependent => :destroy
+  has_many :address, :dependent => :destroy
+  has_many :feedback, :dependent => :destroy
+  has_many :card, :dependent => :destroy
   has_one_attached :picture
 
 end

@@ -2,6 +2,7 @@ class AddressesController < ApplicationController
 
   def create
     address = Address.new(parameter.merge({user_id: @current_user}))
+    # debugger
     if address.save
       if params[:type] == "order"
         redirect_to new_order_path

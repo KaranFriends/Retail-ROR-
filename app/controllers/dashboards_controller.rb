@@ -5,8 +5,8 @@ class DashboardsController < ApplicationController
     end
 
     @user = User.find_by(id: @current_user)
-    @addresses = Address.where(user_id: @user.id)
-    @cards = Card.where(user_id: @user.id)
+    @addresses = Address.where(user_id: @current_user)
+    @cards = Card.where(user_id: @current_user)
     @selected = params[:selected]
   end
 

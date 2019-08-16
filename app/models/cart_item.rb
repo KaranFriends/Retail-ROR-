@@ -1,6 +1,4 @@
 class CartItem < ApplicationRecord
-  belongs_to :cart
-  belongs_to :product
 
   def add
     self.update_attribute(:quantity, quantity + 1)
@@ -13,5 +11,8 @@ class CartItem < ApplicationRecord
   end
 
   scope :new_order, -> {where(status: "new")}
+
+  belongs_to :cart
+  belongs_to :product
 
 end

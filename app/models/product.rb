@@ -13,7 +13,7 @@ class Product < ApplicationRecord
     end
   end
 
-  belongs_to :user, optional: true
-  has_many :cart_item
+  belongs_to :user
+  has_many :cart_item, :dependent => :destroy
   has_one_attached :product_picture
 end
